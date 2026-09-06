@@ -1,0 +1,5 @@
+site_name: LiquidAmber Docs
+nav:
+  - Home: index.md
+  - About: about.md
+  - Contact: contact.md
