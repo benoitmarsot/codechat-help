@@ -1,5 +1,21 @@
 site_name: LiquidAmber Docs
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
 nav:
   - Home: index.md
+  - Products:
+      - Discover:
+          - Overview: discover.md
+          - Getting Started: discover-getting-started.md
+          - User Interface Guide: discover-interface.md
+          - Research Trails & Response Tools: discover-research-trails.md
+      - Engage: engage.md
+      - Verify: verify.md
+      - Describe: describe.md
   - About: about.md
   - Contact: contact.md
