@@ -1,4 +1,5 @@
 site_name: LiquidAmber Docs
+site_url: https://www.liquidamber.ai/help/
 theme:
   name: material
   features:
