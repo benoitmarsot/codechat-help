@@ -20,7 +20,8 @@ LiquidAmber Describe turns research findings into branded charts and graphics th
 
 ## Creating a chart
 
-![Describe chart creator, Prompt tab, numbered 1 through 4](images/describe/chart-creator-prompt.png)
+![Describe chart creator, Prompt tab, numbered 1 through 4](images/describe/prompt.png)
+
 *Screenshot placeholder — Prompt tab and history panel.*
 
 1. **Prompt** — describe what you want the chart to show, or what should change in the current chart (e.g. "switch to bar chart", "emphasize 2026 values", "simplify labels").
@@ -31,6 +32,7 @@ LiquidAmber Describe turns research findings into branded charts and graphics th
 ## Editing the chart spec directly
 
 ![JSON Source tab showing the Vega-Lite chart spec](images/describe/json-source.png)
+
 *Screenshot placeholder — JSON Source tab.*
 
 1. **JSON Source tab** — switches from the Prompt view to the raw chart spec, split into `infographic_meta` (eyebrow tag, headline, subtitle, source credit, brand theme) and `chart_spec` (the Vega-Lite specification and its data values).
