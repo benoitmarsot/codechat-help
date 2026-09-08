@@ -1,5 +1,8 @@
 # Describe
 
+# Hello Benoit!
+
+
 ## Overview
 
 LiquidAmber Describe turns research findings into branded charts and graphics that publishers can use to explain complex topics more clearly. You describe what you want in plain language, Describe generates a chart, and you can keep refining it — by prompt or by editing the underlying spec directly — until it's ready to publish.
