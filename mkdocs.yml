@@ -13,11 +13,17 @@ nav:
       - Discover:
           - Overview: discover.md
           - Getting Started: discover-getting-started.md
+          - Projects & Collaboration: discover-projects.md
           - User Interface Guide: discover-interface.md
           - Research Trails & Response Tools: discover-research-trails.md
+          - Export & Share: export-and-share.md
+          - Troubleshooting: discover-troubleshooting.md
+          - Personal Memory: personal-memory.md
+          - Profile & Account Access: account-and-password.md
           - Discover Local Two-Step Journalist Guide: discover-local-two-step-journalist-guide.md
           - Administration:
             - Overview: admin.md
+            - Launch a New Outlet: admin-outlet-launch-checklist.md
             - Users: admin-users.md
             - Organizations & Outlets: admin-outlets.md
             - Announcements: admin-announcements.md

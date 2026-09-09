@@ -25,6 +25,8 @@ Do not submit passwords, API credentials, private keys, or sensitive source mate
 
 For sign-in, invitation, password-reset, role, project, or outlet-access issues, contact your organization's LiquidAmber administrator first. Administrators can resend invitations, send password resets, restore disabled accounts, and correct scoped access.
 
+Start with [Profile, password, and account access](account-and-password.md) for self-service profile changes and password recovery.
+
 Administrators can use these guides:
 
 - [Manage users](admin-users.md) for invitations, password resets, account status, and roles.

@@ -51,6 +51,18 @@ Each suggestion card shows:
   - **+ Follow-up** - accepts the issue and sends it to the Follow-ups tab for manual resolution (use this when the claim needs outside confirmation before the article can ship).
   - **Reject** - dismisses the finding as not applicable.
 
+## Decide how to handle a finding
+
+Review the flagged text, explanation, evidence, and proposed revision before choosing an action. The controls record different editorial decisions:
+
+- **Apply** changes the working article text to the proposed revision and accepts the finding. Review the draft preview first; applying a revision does not independently verify its factual content.
+- **Accept** records that the finding is valid and requires action. It does not edit the article by itself and does not mean an unverified claim has become verified. Accepted findings with a required action, and accepted disputed or unverified Fact Check findings, appear in **Follow-ups**.
+- **Reject** records that the finding is not applicable. Use it for an incorrect, duplicate, or irrelevant finding, not merely to remove a difficult issue from the open list.
+- **Severity override** changes the editorial priority assigned to a finding. It does not alter the finding, evidence, verification status, or accept/reject decision.
+- **Add comment** records the editor's evidence, rationale, or follow-up result. Comments help later reviewers understand why a decision was made.
+
+In **Issue Explorer**, selection checkboxes let you apply Accept, Reject, or a severity override to several visible findings. Confirm the active filters and selected count before using a bulk action.
+
 ## 4. Suggested Edits tab
 
 ![Suggested Edits tab with status/category/severity filters, article body, and suggestion detail panel](images/verify/suggested-edit.png)
@@ -79,9 +91,11 @@ Each row shows:
 
 - The severity pill and the flagged text.
 - The originating agent (e.g. **Fact Check Agent**) and its status tag (e.g. **unverified**).
-- A checkmark control to mark the follow-up resolved once confirmed, and a chevron to expand full detail.
+- A chevron to expand the full finding, add an editor comment, or change the review decision.
 
 An **Export PDF** button lets you generate a shareable copy of the follow-up list, useful for looping in a reporter or a source for confirmation.
+
+Use an editor comment to record what was checked and the resulting evidence. An accepted item remains in Follow-ups while its report still classifies it as requiring manual action, disputed, or unverified. Reject it only when the finding itself is not applicable.
 
 ## 6. Keywords tab
 
@@ -108,8 +122,10 @@ This tab is the raw, unfiltered view of everything the six agents produced:
 
 1. Open the outlet's **Editorial Review dashboard** and pick an article from the **Needs Work** list.
 2. Check the **Overview** tab to see the score, the blocking reasons, and the recommended next steps.
-3. Work through **Suggested Edits**, filtering by status/category/severity, accepting or rejecting each suggestion and applying revisions as needed.
-4. Send any claim that needs outside confirmation to **Follow-ups** and resolve it there once verified.
+3. Work through **Suggested Edits**, filtering by status/category/severity, applying appropriate revisions, accepting valid findings, and rejecting only findings that are not applicable.
+4. Send claims that need outside confirmation to **Follow-ups**, then record the result and evidence in an editor comment.
 5. Review the **Keywords** tab to confirm the selected SEO keywords are accurate.
 6. Use **Agent Output** if you need the full detail behind any finding.
 7. Once all blocking issues are cleared, mark the article **Ready to Publish**.
+
+Use [Export and share your work](export-and-share.md#export-from-verify) when a reporter, editor, or source needs a PDF of the review, filtered issues, or follow-ups.

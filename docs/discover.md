@@ -13,21 +13,19 @@ LiquidAmber Discover is a newsroom research agent. It queries your CMS and other
 ## Guides
 
 - [Getting Started with Discover](discover-getting-started.md) — how to write effective queries, understand your archive, and why each new topic should get its own discussion.
+- [Projects and Collaboration](discover-projects.md) — how to create, find, share, duplicate, edit, and remove project workspaces.
 - [User Interface Guide](discover-interface.md) — a tour of the main screen, the user control panel, and the left menu options on each discussion.
 - [Research Trails & Response Tools](discover-research-trails.md) — how sourcing is shown, and the tools available on each response.
+- [Export and Share Your Work](export-and-share.md) — how to copy one answer, export a discussion, and choose Verify or Describe output formats.
+- [Troubleshoot Discover](discover-troubleshooting.md) — symptom-based help for access, search, evidence, response, and download problems.
+- [Using Personal Memory](personal-memory.md) — how to save, scope, prioritize, expire, and remove context the assistant should remember.
+- [Profile, Password, and Account Access](account-and-password.md) — how to update your name, change or reset a password, and resolve account-status issues.
 
 ## Project
 
 A project is a container for your discussions plus its own AI configuration (model, prompt, data sources) and its own list of users who can access it.
 
-- **Create** – start a new project through the setup wizard: name, description, outlet, and initial assistant/prompt configuration.
-- **Duplicate** – copy an existing project's full configuration under a new name and description.
-- **Edit** – update a project's name or description.
-- **Delete** – remove a project. An outlet user cannot delete their only project.
-- **Manage access** – add or remove the users who can use the project.
-- **Configure assistants** – choose the AI model used for the main assistant, the social assistant, and the image-describer function.
-- **Configure data sources** – connect the project to the CMS or other content sources it can query.
-- **Launch a discussion** – start chatting inside the project.
+Use the [Projects and Collaboration guide](discover-projects.md) to create a project, find or sort existing projects, manage team access, duplicate a configuration, and understand which settings depend on your permissions.
 
 ## Discussion
 
@@ -57,16 +55,9 @@ Start with the [Discover Administration Guide](admin.md) for access scope, safet
 
 ## Profile
 
-- **Name** – editable.
-- **Email**, **role**, and **account status** – read-only.
-- **Password** – change your password.
+Your name is editable, while your email, role, and account status are managed by an administrator. Follow [Profile, Password, and Account Access](account-and-password.md) to update your profile, change your password, or recover access.
 
 ## Personal memory
 
-Personal memory stores facts you want the assistant to remember, in two scopes:
-
-- **Global** – available across all of your projects.
-- **Project** – tied to one specific project.
-
-You can create, edit, and delete memories; edits can change the content, importance (low, normal, or high), and expiration date, but the scope and project are fixed once a memory is created. You can also filter the memory list by scope and toggle a memory between active and expired.
+Personal memory stores facts, preferences, and context in a global scope or for one project. See [Using Personal Memory](personal-memory.md) to choose the right scope, manage importance and expiration, and understand how active memories influence future answers.
 

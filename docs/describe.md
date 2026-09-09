@@ -58,4 +58,61 @@ Describe is launched as a follow-up action from a Discover or Verify discussion 
 ![Context Data dialog showing the source discussion and project used to seed the chart](images/describe/context.png)
 *Screenshot placeholder — Context Data dialog.*
 
+## Recover from generation or rendering problems
+
+### The prompt does not produce the intended chart
+
+Make the next prompt describe the structure as well as the subject. Include:
+
+- the chart type, such as bar, line, timeline, or scatter plot;
+- the field that belongs on each axis;
+- the measure to compare;
+- the date or category order;
+- labels or annotations that must remain visible; and
+- what should be removed from the current version.
+
+Use the change summary and preview after each generation. When a revision moves in the wrong direction, use undo or select an earlier history step instead of layering contradictory prompts onto it.
+
+### JSON is invalid
+
+Open **JSON Source** and check the validity indicator. When it shows **Invalid JSON**:
+
+1. Read the error shown below the editor. Syntax errors include a line and column when available.
+2. Use **Format JSON** to expose mismatched braces, commas, or quotation marks.
+3. Use **Validate JSON** after correcting the error.
+4. Confirm that the document contains the complete infographic payload, including `infographic_meta` and `chart_spec`, rather than only a standalone Vega-Lite fragment.
+
+The preview can render only supported infographic JSON. Loading an arbitrary JSON document produces **Unsupported JSON**.
+
+### JSON is valid but the chart does not render
+
+Read the validation or chart-render message in the preview. Check that:
+
+- `chart_spec.$schema` references Vega-Lite version 5 or 6;
+- the data fields named by encodings exist in the data values;
+- mark and encoding types are valid Vega-Lite values; and
+- the current source contains no unsupported color or schema values reported by the validator.
+
+Return to the last working history entry when the failure followed a recent edit. Use **Reset** only when you intend to clear the current editable source and begin again.
+
+### Labels or layout are difficult to read
+
+Use the labels toggle, zoom controls, fullscreen preview, and theme selector to inspect the output. If labels still collide, ask Describe to shorten labels, change orientation, reduce the number of categories, or move detail into the subtitle or source note.
+
+Check the graphic at its intended publication size, not only in the enlarged editor preview.
+
+## Save or export a graphic
+
+**Save version** adds the current source to the editor's history. It does not download a file.
+
+Use **Export diagram** when you need a file:
+
+- **SVG** for responsive vector output;
+- **PNG** at 1x, 2x, or 3x scale;
+- **PDF** for a fixed document version;
+- **JSON** for the current infographic payload; or
+- **Session** for a JSON file containing the prompt, context, current source, theme, and history so the work can be resumed.
+
+If export fails, first confirm that the preview renders and the JSON is valid. See [Export and share your work](export-and-share.md#export-from-describe) for format selection and publication checks.
+
 
