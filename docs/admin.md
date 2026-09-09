@@ -1,6 +1,6 @@
-# Discover administration
+# LiquidAmber administration
 
-LiquidAmber Discover administration brings user access, outlet configuration, announcements, and feedback into one workspace. The pages and actions available to you depend on your role and permissions.
+LiquidAmber administration brings user access, outlet configuration, announcements, and feedback into one workspace. The pages and actions available to you depend on your role and permissions.
 
 ## Open the admin workspace
 

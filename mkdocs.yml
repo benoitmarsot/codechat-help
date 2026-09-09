@@ -1,11 +1,11 @@
-site_name: LiquidAmber Docs
+site_name: LiquidAmber Help
 site_url: https://www.liquidamber.ai/help/
 theme:
   name: material
+  logo: images/logo.svg
+  favicon: images/logo.svg
   features:
     - navigation.sections
-    - navigation.expand
-    - navigation.indexes
     - navigation.top
 nav:
   - Home: index.md
@@ -14,22 +14,22 @@ nav:
           - Overview: discover.md
           - Getting Started: discover-getting-started.md
           - Projects & Collaboration: discover-projects.md
-          - User Interface Guide: discover-interface.md
-          - Research Trails & Response Tools: discover-research-trails.md
-          - Export & Share: export-and-share.md
-          - Troubleshooting: discover-troubleshooting.md
+          - Interface Guide: discover-interface.md
+          - Evidence & Response Tools: discover-research-trails.md
           - Personal Memory: personal-memory.md
-          - Profile & Account Access: account-and-password.md
-          - Discover Local Two-Step Journalist Guide: discover-local-two-step-journalist-guide.md
-          - Administration:
-            - Overview: admin.md
-            - Launch a New Outlet: admin-outlet-launch-checklist.md
-            - Users: admin-users.md
-            - Organizations & Outlets: admin-outlets.md
-            - Announcements: admin-announcements.md
-            - Feedback: admin-feedback.md
-      - Engage: engage.md
-      - Verify: verify.md
+          - Troubleshooting: discover-troubleshooting.md
+          - Two-Step Local Research: discover-local-two-step-journalist-guide.md
       - Describe: describe.md
+      - Verify: verify.md
+      - Engage: engage.md
+  - Account & Password: account-and-password.md
+  - Export & Share: export-and-share.md
+  - Administration:
+      - Overview: admin.md
+      - Launch a New Outlet: admin-outlet-launch-checklist.md
+      - Organizations & Outlets: admin-outlets.md
+      - Users & Access: admin-users.md
+      - Announcements: admin-announcements.md
+      - Feedback Review: admin-feedback.md
   - About: about.md
   - Contact: contact.md

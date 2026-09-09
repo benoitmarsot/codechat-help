@@ -31,7 +31,7 @@ Administrators can use these guides:
 
 - [Manage users](admin-users.md) for invitations, password resets, account status, and roles.
 - [Manage organizations and outlets](admin-outlets.md) for outlet configuration and access scope.
-- [Discover administration](admin.md) for the complete administration workspace.
+- [LiquidAmber administration](admin.md) for the complete administration workspace.
 
 If your organization has an established LiquidAmber support contact, use that channel for service or deployment issues. Include the affected product, organization or outlet, approximate time, and steps that reproduce the problem. Do not include credentials.
 

@@ -146,4 +146,4 @@ Show the outlet administrator how to:
 - preserve stored CMS credentials when editing Blox settings; and
 - request platform help for organization, outlet, or configuration changes outside their scope.
 
-Return to the [Discover administration overview](admin.md) for links to every administrative area.
+Return to the [LiquidAmber administration overview](admin.md) for links to every administrative area.

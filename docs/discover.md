@@ -51,7 +51,7 @@ Admin tools are reached from the user menu. The pages and actions shown depend o
 - [**Announcements**](admin-announcements.md) sends or schedules targeted HTML email.
 - [**Feedback**](admin-feedback.md) reviews rated Discover responses and their sources.
 
-Start with the [Discover Administration Guide](admin.md) for access scope, safety guidance, and complete procedures.
+Start with the [LiquidAmber Administration Guide](admin.md) for access scope, safety guidance, and complete procedures.
 
 ## Profile
 
