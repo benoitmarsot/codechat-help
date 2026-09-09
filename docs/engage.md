@@ -64,6 +64,6 @@ Engage is built to disappear into a publisher's own design rather than stand out
 
 Turning Engage on for an outlet is an administrative task, not something a reader configures:
 
-- An outlet admin supplies the partner identifier, site key, and backend API URL, and maintains the list of domains allowed to embed the widget (the Engage embed domain allowlist, configured from the Outlets admin screen; see [Discover Admin](discover.md#admin)).
+- An outlet admin supplies the partner identifier, site key, and backend API URL, and maintains the list of domains allowed to embed the widget. See [Configure Engage security](admin-outlets.md#configure-engage-security).
 - A publisher's engineering team adds the `<liquidamber-engage>` element and its loader script to the page(s) where Engage should appear, choosing embedded or overlay mode and, for overlay mode, the element that should trigger it.
 - The widget's assets can be preloaded in the background so there's no delay the first time a reader opens it.

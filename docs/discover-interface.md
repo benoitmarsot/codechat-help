@@ -25,7 +25,7 @@ This page walks through the main Discover screen, the user control panel, and th
 The user control panel lets you modify your interface and manage your account.
 
 1. **Light and Dark** — switch the interface between black-on-white and white-on-black text.
-2. **Admin** — depending on your role, you may have administrator control over your organization's users. See [Admin](discover.md#admin).
+2. **Admin** — depending on your role, opens user, outlet, announcement, and feedback tools. See [Discover administration](admin.md).
 3. **Profile** — change your displayed name, your email address, or reset your password. See [Profile](discover.md#profile).
 4. **Personal memory** — manage facts you want the assistant to remember, scoped globally or to a specific project. See [Personal memory](discover.md#personal-memory).
 5. **Log out** — closes your session. Your queries and history are preserved and will appear the next time you log in.

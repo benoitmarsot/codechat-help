@@ -46,12 +46,14 @@ For a screenshot walkthrough of the discussion list and its menu options, see th
 
 ## Admin
 
-Admin tools are reached from the user avatar menu and cover four areas:
+Admin tools are reached from the user menu. The pages and actions shown depend on your role and access scope:
 
-- **Users** – create accounts and assign access roles (Platform Admin, Organization Admin/Viewer, Outlet Admin/Viewer/User), optionally scoped to an organization or outlet, with an option to auto-create a starter project.
-- **Outlets** – manage organizations and outlets, including MCP data-source URLs, CMS API settings, the Engage embed domain allowlist, and prompt-type mappings.
-- **Announcements** – compose and send or schedule announcements, targeted at all users, a specific organization, or a specific outlet.
-- **Feedback** – review user-submitted feedback, sortable by date, author, or rating.
+- [**Users**](admin-users.md) creates accounts and assigns platform, organization, or outlet roles.
+- [**Outlets**](admin-outlets.md) manages organizations, outlet prompt variables, Blox MCP settings, and Engage security.
+- [**Announcements**](admin-announcements.md) sends or schedules targeted HTML email.
+- [**Feedback**](admin-feedback.md) reviews rated Discover responses and their sources.
+
+Start with the [Discover Administration Guide](admin.md) for access scope, safety guidance, and complete procedures.
 
 ## Profile
 

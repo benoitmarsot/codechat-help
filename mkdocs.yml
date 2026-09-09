@@ -16,6 +16,12 @@ nav:
           - User Interface Guide: discover-interface.md
           - Research Trails & Response Tools: discover-research-trails.md
           - Discover Local Two-Step Journalist Guide: discover-local-two-step-journalist-guide.md
+          - Administration:
+            - Overview: admin.md
+            - Users: admin-users.md
+            - Organizations & Outlets: admin-outlets.md
+            - Announcements: admin-announcements.md
+            - Feedback: admin-feedback.md
       - Engage: engage.md
       - Verify: verify.md
       - Describe: describe.md
