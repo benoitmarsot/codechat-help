@@ -38,7 +38,7 @@ Ask the project owner to grant you project access or ask an administrator to rev
 7. Try terminology that may have appeared in the publication at the time.
 8. Ask Discover whether it can find coverage for the topic and period before assuming the archive contains it.
 
-Compare the examples in [Getting Started with Discover](discover-getting-started.md#1-how-to-write-effective-queries). For broad historical research in a project configured for two-step retrieval, see the [Discover Local Two-Step Journalist Guide](discover-local-two-step-journalist-guide.md).
+Compare the examples in [Getting Started with Discover](discover-getting-started.md#1-how-to-write-effective-queries). For broad historical research in a project configured for **Deep Archive Search**, see the [Deep Archive Search](discover-local-two-step-journalist-guide.md).
 
 ## A known article is missing
 

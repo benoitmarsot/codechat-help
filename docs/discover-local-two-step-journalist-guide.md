@@ -25,7 +25,7 @@ This improves recall while keeping the model's working context under control.
 | Context use | Higher per search result | Lower during discovery |
 | Best fit | Narrow or straightforward searches | Timelines, backgrounders, broad topics, and archive research |
 
-The normal prompt is unchanged. Projects continue using it unless they are explicitly configured for the `discover/local/2steps` prompt flavor.
+The normal prompt is unchanged. Projects continue using it unless they are explicitly configured for the `discover/local/deep-archive-search` prompt flavor.
 
 ## How Deep Archive Search Works
 
@@ -149,7 +149,7 @@ Both prompts:
 
 A project using this workflow must:
 
-- Select the `discover/local/2steps` prompt flavor.
+- Select the `discover/local/Deep Archive Search` prompt flavor.
 - Allow the `blox_search_summary` tool.
 - Allow the `blox_get_article` tool.
 - Have working BLOX CMS credentials for full article retrieval.

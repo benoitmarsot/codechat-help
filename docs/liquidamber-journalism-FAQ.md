@@ -42,7 +42,7 @@ Yes. LiquidAmber can interpret requests such as "last week," "between March and 
 
 ## How does LiquidAmber handle a broad archive question?
 
-For a timeline, backgrounder, or other wide-ranging question, LiquidAmber can use a two-step process:
+For a timeline, backgrounder, or other wide-ranging question, LiquidAmber can use **Deep Archive Search**:
 
 1. Scan article summaries across a broad result set.
 2. Identify every article that materially contributes to the reporting question.
