@@ -15,8 +15,8 @@ LiquidAmber Engage brings LiquidAmber's research and verification capabilities t
 
 ## 1. Embedding on a page
 
-![Publisher page with an inline Engage search field and an "Open Engage" trigger button in the header](images/engage/inline-search.png)
-*Screenshot placeholder, inline search field and overlay trigger on a publisher page.*
+![Publisher page with an inline Engage search field](images/engage/inline-search.png)
+*Screenshot placeholder, inline embedded Engage search field on a publisher page.*
 
 Engage is delivered as a single custom element, `<liquidamber-engage>`, loaded through a small script tag. A publisher can present it in either of two modes:
 
@@ -27,8 +27,8 @@ Both modes call the same backend and produce the same answer experience once a q
 
 ## 2. Asking a question and getting an answer
 
-![Engage overlay panel showing an answer with Evidence & Sources, a Coverage Note, and Suggested Actions](images/engage/answer-panel.png)
-*Screenshot placeholder, answer panel with evidence, coverage note, and suggested actions.*
+![Embedded Engage panel showing an answer with Evidence & Sources, a Coverage Note, and Suggested Actions](images/engage/answer-panel.png)
+*Screenshot placeholder, embedded answer panel with evidence, coverage note, and suggested actions.*
 
 Once a reader submits a question, Engage returns an answer the same way a Discover response is built, grounded in the publisher's own content, with the sourcing kept visible instead of hidden behind the text.
 
