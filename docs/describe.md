@@ -12,7 +12,7 @@ LiquidAmber Describe turns research findings into branded charts and graphics th
 
 - Converts data and research results gathered during a project into visual charts and graphics.
 - Generates a chart from a natural-language prompt, and lets you keep refining it with follow-up prompts.
-- Can be launched directly from a Discover or Verify discussion as a follow-up action, carrying over the conversation's data as a starting point.
+- Can be launched directly from a Discover discussion as a follow-up action, carrying over the conversation's data as a starting point.
 - Exposes the underlying chart spec (Vega-Lite JSON) for direct editing, with a diff summary of what changed.
 - Lets you preview the chart under several branded themes before exporting.
 - Keeps a version history so you can save a version, review prior steps, or reset.
@@ -53,7 +53,7 @@ LiquidAmber Describe turns research findings into branded charts and graphics th
 
 ## Starting from a conversation
 
-Describe is launched as a follow-up action from a Discover or Verify discussion — for example, a "Draw" suggested action after a research answer. When it is, the chart starts from the data already surfaced in that conversation. Context contain the discussion that was use for the graphic.
+Describe is launched as a follow-up action from a Discover discussion — for example, a "Draw" suggested action after a research answer. When it is, the chart starts from the data already surfaced in that conversation. Context contain the discussion that was use for the graphic.
 
 ![Context Data dialog showing the source discussion and project used to seed the chart](images/describe/context.png)
 *Screenshot placeholder — Context Data dialog.*
