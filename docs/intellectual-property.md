@@ -42,6 +42,6 @@ LiquidAmber is designed to support journalists and newsroom teams, not replace t
 
 ## Related help
 
-- [Newsroom FAQ](LiquidAmberJournalismFAQ.md)
+- [Newsroom FAQ](liquidamber-journalism-FAQ.md)
 - [Personal Memory](personal-memory.md)
 - [Projects & Collaboration](discover-projects.md)
