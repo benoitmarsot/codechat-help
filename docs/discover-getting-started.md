@@ -36,8 +36,6 @@ The basics:
 
 Discover draws from your publication's digitized archive. The depth and range of that archive will shape what's retrievable.
 
-> Your archive covers material dating back to: **[INSERT DATE]**
-
 A few things to keep in mind:
 
 - **Older material may have variable quality.** Content digitized from print archives can have formatting or OCR inconsistencies that affect retrievability.
