@@ -21,7 +21,7 @@ LiquidAmber Engage brings LiquidAmber's research and verification capabilities t
 Engage is delivered as a single custom element, `<liquidamber-engage>`, loaded through a small script tag. A publisher can present it in either of two modes:
 
 - **Embedded mode** (default): the widget sits directly in the page layout, for example a search field placed above an article or in a sidebar. A reader types a question and taps **Ask** without leaving the page.
-- **Overlay mode**: a publisher-chosen element, such as an "Open Engage" button in a header or nav bar, opens the widget as a panel over the page. This gives a publisher a single, site-wide entry point.
+- **Overlay mode** (coming soon): a publisher-chosen element, such as an "Open Engage" button in a header or nav bar, opens the widget as a panel over the page. This gives a publisher a single, site-wide entry point.
 
 Both modes call the same backend and produce the same answer experience once a question is asked.
 
