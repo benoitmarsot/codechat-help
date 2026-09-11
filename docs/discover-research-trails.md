@@ -20,8 +20,8 @@ Each query response, along with individual in-line links to specific stories, in
 
 1. Each fact presented is supported by in-line information about its source material, including the original story headline, publication name, date, and a direct link.
 2. If photos are associated with the original stories, they're displayed in the response. Each image can be downloaded for re-use or reference.
-3. Suggested actions can also include a call to **LiquidAmber Describe**, which creates a shareable graphic and links out to the embedded Q&A widget on the publisher's site. See [Describe]4. Discover prompts you with **suggested actions** relevant to the current discussion, so you can keep going without composing a new query from scratch.
-(describe.md).
+3. Suggested actions can also include a call to **LiquidAmber Describe**, which creates a shareable graphic and links out to the embedded Q&A widget on the publisher's site. See [Describe](describe.md).
+4. Discover prompts you with **suggested actions** relevant to the current discussion, so you can keep going without composing a new query from scratch.
 5. Each response includes tools to help you use it: copy the response, download it as Markdown (.md), and give **thumbs up** or **thumbs down** feedback on the quality of the response.
 
 See also: [Getting Started with Discover](discover-getting-started.md) and [User Interface Guide](discover-interface.md).

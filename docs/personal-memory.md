@@ -43,7 +43,11 @@ Keep each memory short, specific, and limited to one durable idea. Good candidat
 - terminology that should be used consistently;
 - a stable research preference;
 - the scope or goal of a long-running project; or
-- context that would otherwise need to be repeated in every new discussion.
+- context that would otherwise need to be repeated in every new discussion;
+- source records; or
+- notes.
+
+You can also ask the LiquidAmber agent to create a memory from useful context in an answer. Review memories for accuracy and apply editorial verification before relying on them.
 
 Do not save passwords, authentication tokens, API credentials, payment details, government identifiers, private third-party information, or sensitive source material.
 
