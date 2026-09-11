@@ -1,8 +1,8 @@
-# Two-Step Local News Search: Journalist Guide
+# Deep Archive Search: Journalist Guide
 
 ## Purpose
 
-The two-step local search is designed for questions that may require reviewing a broad archive without loading every full article at once.
+Deep Archive Search is designed for questions that may require reviewing a broad archive without loading every full article at once.
 
 It separates discovery from evidence gathering:
 
@@ -13,9 +13,9 @@ It separates discovery from evidence gathering:
 
 This improves recall while keeping the model's working context under control.
 
-## Normal Prompt Versus Two-Step Prompt
+## Standard Research Versus Deep Archive Search
 
-| | Normal prompt | Two-step prompt |
+| | Standard Research | Deep Archive Search |
 |---|---|---|
 | Initial tool | `blox_search` | `blox_search_summary` |
 | Initial result | JSON containing full article content | RSS containing headlines and summaries |
@@ -27,7 +27,7 @@ This improves recall while keeping the model's working context under control.
 
 The normal prompt is unchanged. Projects continue using it unless they are explicitly configured for the `discover/local/2steps` prompt flavor.
 
-## How the Two-Step Process Works
+## How Deep Archive Search Works
 
 ### Step 1: Summary discovery
 
@@ -100,7 +100,7 @@ Unfetched summaries may describe the remaining coverage, but they should not sup
 
 ## What Journalists Will Notice
 
-A two-step answer may take more tool calls than a normal answer because relevant articles are retrieved individually. In return, it can inspect a broader set of candidates before spending context on full text.
+A Deep Archive Search answer may take more tool calls than a Standard Research answer because relevant articles are retrieved individually. In return, it can inspect a broader set of candidates before spending context on full text.
 
 The Coverage Note should make the process visible. A completed answer may say:
 
@@ -112,13 +112,13 @@ If retrieval stops early, it may say:
 
 ## When to Use Each Prompt
 
-Use the normal prompt when:
+Use Standard Research when:
 
 - The question is narrow and likely answered by a small number of stories.
 - Speed matters more than a broad archive sweep.
 - The newest 20 full results are likely to contain the answer.
 
-Use the two-step prompt when:
+Use Deep Archive Search when:
 
 - Building a timeline or backgrounder
 - Researching a topic across months or years
@@ -130,9 +130,9 @@ Use the two-step prompt when:
 
 For a question such as "How did the downtown redevelopment plan develop, and what remains unresolved?":
 
-The normal prompt searches a page of full articles and begins synthesis from those results.
+Standard Research searches a page of full articles and begins synthesis from those results.
 
-The two-step prompt first scans up to 50 compact summaries, pages farther if relevant coverage continues, identifies the articles that mark decisions and changes in the project, retrieves each relevant full article sequentially, and then writes the timeline from the complete fetched evidence.
+Deep Archive Search first scans up to 50 compact summaries, pages farther if relevant coverage continues, identifies the articles that mark decisions and changes in the project, retrieves each relevant full article sequentially, and then writes the timeline from the complete fetched evidence.
 
 ## What Does Not Change
 
@@ -154,26 +154,26 @@ A project using this workflow must:
 - Allow the `blox_get_article` tool.
 - Have working BLOX CMS credentials for full article retrieval.
 
-Existing projects using `discover/local/normal` continue to use the original one-step full-content search behavior.
+Existing projects using `discover/local/normal` continue to use the original Standard Research behavior.
 
-## Example result result from a 2 steps process
-![Coverage from the two-step process](images/discover/coverage-2steps.png)
+## Example result from Deep Archive Search
+![Coverage from Deep Archive Search](images/discover/coverage-2steps.png)
 
 ### Evidence and sources
 
 _look at the number of review articles with the current normal discover_
-![Evidence and sources from the two-step process](images/discover/evidence-2steps.png)
+![Evidence and sources from Deep Archive Search](images/discover/evidence-2steps.png)
 
-## Example with current discover normal
-![Coverage from the current normal Discover process](images/discover/coverage-normal.png)
+## Example with Standard Research
+![Coverage from Standard Research](images/discover/coverage-normal.png)
 
 ### Evidence and sources
 _look at the number of review articles with the current normal discover_
-![Evidence and sources from the current normal Discover process](images/discover/evidence-normal.png)
+![Evidence and sources from Standard Research](images/discover/evidence-normal.png)
 
 ## comparison
 
 | Workflow | Reviewed articles | References used | Span |
 |---|---:|---:|---|
 | Normal | 39 | 6 | **3 months** |
-| New 2 steps | 191 | 11 | **2 years** |
+| Deep Archive Search | 191 | 11 | **2 years** |
