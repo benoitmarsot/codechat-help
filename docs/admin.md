@@ -17,6 +17,7 @@ If **Admin** or a specific area is not visible, ask a platform administrator to 
 | --- | --- |
 | [Launch a new outlet](admin-outlet-launch-checklist.md) | Follow the full sequence from organization creation through configuration, users, testing, and handoff. |
 | [Users](admin-users.md) | Invite or create users, assign scoped roles, import users, reset access, and activate or disable accounts. |
+| [User onboarding](admin-user-onboarding.md) | Invite a new user, prepare project access, confirm activation, and guide their first research session. |
 | [Outlets](admin-outlets.md) | Create organizations and outlets, maintain prompt variables, configure Blox, and secure Engage domains. |
 | [Announcements](admin-announcements.md) | Send or schedule HTML email announcements for the platform, an organization, or an outlet. |
 | [Feedback](admin-feedback.md) | Review liked and disliked Discover responses with their questions, answers, and sources. |
@@ -49,4 +50,3 @@ The interface only presents organizations, outlets, roles, and actions allowed b
 - Review recipients before confirming an announcement.
 - Treat organization and outlet deletion as cleanup operations. Referenced records cannot be deleted.
 - Use environment variable references for CMS credentials. Stored values are never displayed again.
-

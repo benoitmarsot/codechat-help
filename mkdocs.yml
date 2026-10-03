@@ -44,6 +44,7 @@ nav:
       - Launch a New Outlet: admin-outlet-launch-checklist.md
       - Organizations & Outlets: admin-outlets.md
       - Users & Access: admin-users.md
+      - User Onboarding: admin-user-onboarding.md
       - Announcements: admin-announcements.md
       - Feedback Review: admin-feedback.md
   - About: about.md

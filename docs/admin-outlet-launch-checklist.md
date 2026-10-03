@@ -81,7 +81,7 @@ Plan access from broadest responsibility to narrowest need:
 5. Use **Invite user** for normal onboarding, then confirm the account appears as **Pending**.
 6. Ask each invited user to activate the account and confirm it becomes **Active**.
 
-Use [Manage users](admin-users.md) for role selection, invitations, direct account creation, CSV import, and account status. Use [Projects and collaboration](discover-projects.md) when a project owner needs to create another workspace or share one with additional users.
+Follow [Onboard a new user](admin-user-onboarding.md) for invitation settings, activation, project access, and the first research session. Use [Manage users](admin-users.md) for role selection, direct account creation, CSV import, and account status. Use [Projects and collaboration](discover-projects.md) when a project owner needs to create another workspace or share one with additional users.
 
 ## 6. Prepare Engage domain security
 

@@ -14,6 +14,8 @@ Use **Admin > Users** to control accounts and role assignments. The page lists n
 
 ## Invite or create one user
 
+For a step-by-step invitation, activation, project-access, and first-session checklist, follow [Onboard a new user](admin-user-onboarding.md).
+
 Use **Invite user** for the normal onboarding flow. Use **Create user** only when the account must be active immediately with an administrator-provided initial password.
 
 1. Select **Invite user** or **Create user**.
