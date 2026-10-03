@@ -10,7 +10,7 @@ Gather the following before creating records:
 
 - organization name;
 - outlet name and public-facing publication name;
-- Blox profile name or slug;
+- CMS connection profile name or slug;
 - public site URL;
 - CMS API URL, when authenticated CMS lookups are required;
 - deployment-managed environment variable references for the CMS key and secret;
@@ -41,24 +41,26 @@ See [Create or select an outlet](admin-outlets.md#create-or-select-an-outlet) fo
 Prompt variables adapt Discover and Engage instructions to the publication. Each group saves independently.
 
 1. Complete every required field in **Discover / Local**.
-2. Use the exact Blox profile in `blox_profile_name`.
+2. Use the exact CMS connection profile supplied by your deployment administrator. For a BLOX integration, this is the `blox_profile_name` field.
 3. Enter the publication's public name and the contextual and search names that should appear in generated text.
 4. Enter `coverage_start_date` as `YYYY-MM-DD`.
 5. Describe the outlet's geography, communities, beats, and local relevance in concrete language.
 6. Use real, representative entities and headlines for examples, but do not enter sensitive or unpublished information.
 7. Complete **Engage / Local** with the public-facing publication name and abbreviation.
-8. Keep every `blox_profile_name` value identical across groups.
+8. Keep the CMS connection profile identical across groups. For example, every `blox_profile_name` value must match when using BLOX.
 9. Select **Save variables** in each group you changed.
 
-Conflicting Blox profile values prevent the MCP profile from resolving. Reload the outlet configuration and confirm the saved values before continuing.
+Conflicting CMS profile values prevent the connection profile from resolving. Reload the outlet configuration and confirm the saved values before continuing.
 
-See [Complete prompt variables](admin-outlets.md#complete-prompt-variables) for field guidance and screenshots.
+See [Complete prompt variables](admin-outlets.md#complete-prompt-variables) for field guidance.
 
-## 4. Configure Blox MCP
+## 4. Configure the CMS connection
 
-1. Confirm the read-only **Blox profile** matches the intended outlet profile.
+Section labels and available fields depend on the CMS integration. For example, a BLOX connection uses **Blox MCP Config** and **Blox profile** in the administration screen.
+
+1. Confirm the connection profile matches the intended outlet profile.
 2. Enter the outlet homepage in **Site URL**.
-3. Enter **CMS API URL** when the integration uses authenticated Blox lookups.
+3. Enter **CMS API URL** when the integration uses authenticated CMS lookups.
 4. Enter the approved environment variable reference in **CMS key** and **CMS secret** only when setting or replacing those values.
 5. Enable **Use local news mode** when the outlet should use local-news filtering behavior.
 6. Select **Save MCP config**.
@@ -68,7 +70,7 @@ Stored credential values are hidden. Leave those fields blank on later edits to 
 
 **Configured** confirms that the profile has a saved configuration. It does not prove that the CMS endpoint, credential references, archive data, and search behavior are all correct. Complete the test questions in step 7 before launch.
 
-See [Configure Blox MCP](admin-outlets.md#configure-blox-mcp) for the complete field reference.
+See [Configure the CMS connection](admin-outlets.md#configure-the-cms-connection) for the field reference.
 
 ## 5. Add initial users and projects
 
@@ -120,10 +122,10 @@ Confirm each item before handoff:
 
 - [ ] Organization and outlet names are correct.
 - [ ] All prompt-variable groups were saved and reloaded.
-- [ ] Blox profile values are present and consistent.
+- [ ] CMS connection profile values are present and consistent.
 - [ ] Site and CMS API URLs point to the intended environment.
 - [ ] Credential fields use approved environment variable references.
-- [ ] Blox MCP reports **Configured**.
+- [ ] The CMS connection reports **Configured**.
 - [ ] Initial users have the narrowest appropriate roles.
 - [ ] Invited users can activate their accounts.
 - [ ] Required users can open the correct project and start a discussion.
@@ -143,7 +145,7 @@ Show the outlet administrator how to:
 - grant project access without broadening account roles;
 - review feedback and its supporting question and answer;
 - identify the selected outlet before changing variables;
-- preserve stored CMS credentials when editing Blox settings; and
+- preserve stored CMS credentials when editing connection settings; and
 - request platform help for organization, outlet, or configuration changes outside their scope.
 
 Return to the [LiquidAmber administration overview](admin.md) for links to every administrative area.

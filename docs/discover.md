@@ -14,6 +14,7 @@ LiquidAmber Discover is a newsroom research agent. It queries your CMS and other
 
 - [Getting Started with Discover](discover-getting-started.md) — how to write effective queries, understand your archive, and why each new topic should get its own discussion.
 - [Projects and Collaboration](discover-projects.md) — how to create, find, share, duplicate, edit, and remove project workspaces.
+- [Prompt Subtypes and Flavors](discover-prompt-options.md) — choose local or international research, compare standard search with Deep Search, and understand CMS archive, NewsBank, and Guardian connections.
 - [User Interface Guide](discover-interface.md) — a tour of the main screen, the user control panel, and the left menu options on each discussion.
 - [Research Trails & Response Tools](discover-research-trails.md) — how sourcing is shown, and the tools available on each response.
 - [Export and Share Your Work](export-and-share.md) — how to copy one answer, export a discussion, and choose Verify or Describe output formats.
@@ -47,7 +48,7 @@ For a screenshot walkthrough of the discussion list and its menu options, see th
 Admin tools are reached from the user menu. The pages and actions shown depend on your role and access scope:
 
 - [**Users**](admin-users.md) creates accounts and assigns platform, organization, or outlet roles.
-- [**Outlets**](admin-outlets.md) manages organizations, outlet prompt variables, Blox MCP settings, and Engage security.
+- [**Outlets**](admin-outlets.md) manages organizations, outlet prompt variables, CMS connection settings, and Engage security.
 - [**Announcements**](admin-announcements.md) sends or schedules targeted HTML email.
 - [**Feedback**](admin-feedback.md) reviews rated Discover responses and their sources.
 
@@ -60,4 +61,3 @@ Your name is editable, while your email, role, and account status are managed by
 ## Personal memory
 
 Personal memory stores facts, preferences, and context in a global scope or for one project. See [Using Personal Memory](personal-memory.md) to choose the right scope, manage importance and expiration, and understand how active memories influence future answers.
-

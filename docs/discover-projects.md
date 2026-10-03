@@ -27,7 +27,7 @@ Select **New Project** to open the **Deep Archive Search** wizard.
 2. Confirm the **Outlet**. Outlet-scoped accounts use an authorized outlet and may have only one available choice.
 3. Enter a clear **Project name**.
 4. Add a short **Project description** that explains the research purpose or team.
-5. Review **Prompt type**, **Prompt subtype**, and **Prompt flavor**. Some choices are fixed by your role or outlet configuration.
+5. Review **Prompt type**, **Prompt subtype**, and **Prompt flavor**. Use the [prompt options guide](discover-prompt-options.md) to compare sources, answer styles, and Deep Search modes. Some choices are fixed by your role or outlet configuration.
 6. Leave the configured **MCP payload** unchanged unless you are responsible for the project's tools and know the required JSON structure.
 7. Continue to **AI Configuration**.
 

@@ -34,7 +34,7 @@ LiquidAmber is designed to return the material behind an answer, including artic
 
 ## How does LiquidAmber support CMS and editorial content systems?
 
-LiquidAmber is designed to support newsroom CMS and content workflows, so research, archive retrieval, and editorial context can stay connected to the systems a publication already uses. Its supported integrations include: **Naviga**, **Blox**, **The Guardian** and more ...
+LiquidAmber is designed to support newsroom CMS and content workflows, so research, archive retrieval, and editorial context can stay connected to the systems a publication already uses. Supported integrations include **Naviga**, **BLOX**, **The Guardian**, and more. Available sources depend on the project's configuration. NewsBank can be connected alongside a CMS archive.
 
 ## Can I search by date?
 

@@ -112,7 +112,7 @@ See [Import users from CSV](admin-users.md#import-users-from-csv) for the exact 
 | Account is **Disabled** | Use **Activate** when restoring access is authorized. |
 | Active user cannot remember the password | Use **Send password reset**, or direct them to **Forgot password?** on the login page. |
 | User can sign in but cannot see the project | Check outlet role scope and project membership, then have them sign out and back in. |
-| Project opens but archive results are missing or from the wrong outlet | Review the project's configuration and the outlet's prompt variables and Blox MCP configuration using [Organizations and outlets](admin-outlets.md). |
+| Project opens but archive results are missing or from the wrong outlet | Review the project's configuration and the outlet's prompt variables and CMS connection configuration using [Organizations and outlets](admin-outlets.md). |
 
 Never ask users to send you their password, invitation token, or reset token.
 

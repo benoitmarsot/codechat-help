@@ -2,7 +2,7 @@
 
 Use **Admin > Outlets** to maintain the organization hierarchy and the configuration Discover and Engage use for each outlet.
 
-The page requires outlet-management access. Editing prompt variables, Blox settings, or Engage security also requires assistant-configuration access. If you can open the page but the settings are read-only, ask a platform administrator to review that permission.
+The page requires outlet-management access. Editing prompt variables, CMS connection settings, or Engage security also requires assistant-configuration access. If you can open the page but the settings are read-only, ask a platform administrator to review that permission.
 
 ## Create or select an outlet
 
@@ -24,12 +24,12 @@ Both actions require confirmation. Resolve dependencies instead of deleting acti
 
 ## Configure an outlet
 
-After you select an outlet, its prompt-variable groups, Blox MCP configuration, and Engage security configuration load together. **Reload outlet config** discards unsaved field changes and reloads the saved values.
+After you select an outlet, its prompt-variable groups, CMS connection configuration, and Engage security configuration load together. **Reload outlet config** discards unsaved field changes and reloads the saved values.
 
 For a new outlet, use this order:
 
 1. Complete and save each prompt-variable group.
-2. Verify the resolved Blox profile and save the Blox MCP configuration.
+2. Verify the resolved outlet profile and save the CMS connection configuration.
 3. Add allowed Engage domains, then enable enforcement when the list is ready.
 
 ## Complete prompt variables
@@ -38,21 +38,23 @@ Prompt variables insert outlet-specific language and examples into Discover and 
 
 ![Discover Local prompt variables for an outlet](images/admin/outlet-discover-local-variables.png)
 
-The **Discover / Local** group includes the Blox profile, publication naming, archive coverage, local geography and focus, sample search entities, and citation examples. Complete values with real outlet terminology. Enter dates as `YYYY-MM-DD`.
+The **Discover / Local** group includes the CMS connection profile, publication naming, archive coverage, local geography and focus, sample search entities, and citation examples. Complete values with real outlet terminology. Enter dates as `YYYY-MM-DD`.
 
 ![Engage Local prompt variables for an outlet](images/admin/outlet-engage-local-variables.png)
 
-The **Engage / Local** group supplies the profile and publication names used in public-facing responses. Keep `blox_profile_name` consistent anywhere it appears. Conflicting profile values prevent the Blox configuration from resolving.
+The **Engage / Local** group supplies the profile and publication names used in public-facing responses. Keep the CMS connection profile consistent anywhere it appears. Conflicting profile values prevent the connection configuration from resolving.
 
-## Configure Blox MCP
+Project prompt choices must also match their source connections. See [Prompt Subtypes and Flavors](discover-prompt-options.md#connected-tools-and-configuration) for CMS archive, NewsBank, international, and Deep Search requirements.
 
-The Blox MCP section connects the selected outlet profile to its public site and, when used, its authenticated CMS endpoint.
+## Configure the CMS connection
+
+The CMS connection settings connect the selected outlet profile to its public site and, when used, its authenticated CMS endpoint. Section labels and available fields depend on the integration.
 
 ![Blox MCP configuration for the selected outlet](images/admin/outlet-blox-mcp-config.png)
 
-1. Confirm **Blox profile**. It resolves from `blox_profile_name`, with the outlet name as a fallback.
+1. Confirm the connection profile matches the intended outlet.
 2. Enter the public homepage in **Site URL**.
-3. If authenticated Blox lookups are enabled, enter **CMS API URL**.
+3. If authenticated CMS lookups are enabled, enter **CMS API URL**.
 4. Supply **CMS key** and **CMS secret** as environment variable references provided by your deployment administrator.
 5. Enable **Use local news mode** when this profile should apply local-news filtering.
 6. Select **Save MCP config** and confirm the status changes to **Configured**.

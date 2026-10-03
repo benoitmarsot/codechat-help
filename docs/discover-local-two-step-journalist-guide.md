@@ -4,6 +4,8 @@
 
 Deep Archive Search is designed for questions that may require reviewing a broad archive without loading every full article at once.
 
+This is the **Deep Search** mode shown as **Deep Archive Search** in the flavor picker. **Deep Archive Search NewsBank** applies the same summary-first approach to its configured NewsBank connection. For all subtype and flavor choices, see [Prompt Subtypes and Flavors](discover-prompt-options.md).
+
 It separates discovery from evidence gathering:
 
 1. Scan compact article summaries across a wider result set.
@@ -17,21 +19,21 @@ This improves recall while keeping the model's working context under control.
 
 | | Standard Research | Deep Archive Search |
 |---|---|---|
-| Initial tool | `blox_search` | `blox_search_summary` |
-| Initial result | JSON containing full article content | RSS containing headlines and summaries |
+| Initial search | Searches full articles | Searches article summaries |
+| Initial result | Full article content | Headlines and summaries |
 | Normal page size | 20 articles | 50 summaries |
-| Full article retrieval | Included in the search result | Separate `blox_get_article` call |
+| Full article retrieval | Included in the search result | Relevant articles read individually |
 | Selection process | Reviews the full articles returned by search | Reviews summaries first, then builds a relevant-article queue |
 | Context use | Higher per search result | Lower during discovery |
 | Best fit | Narrow or straightforward searches | Timelines, backgrounders, broad topics, and archive research |
 
-The normal prompt is unchanged. Projects continue using it unless they are explicitly configured for the `discover/local/deep-archive-search` prompt flavor.
+Standard Research is the `normal` flavor. Deep Search requires the **Deep Archive Search** flavor and an archive connection that supports summary search and full-article reading.
 
 ## How Deep Archive Search Works
 
 ### Step 1: Summary discovery
 
-The assistant searches the publication archive with `blox_search_summary`.
+The assistant searches summaries in the publication's connected CMS archive.
 
 Each result contains enough information for triage:
 
@@ -41,15 +43,15 @@ Each result contains enough information for triage:
 - Author
 - Article URL
 - Image URL, when available
-- A stable `articleId`
+- A unique article identifier
 
-The first page normally contains 50 summaries. Additional pages use offsets of 50 while relevant coverage continues to appear.
+The assistant reviews additional summary pages while relevant coverage continues to appear. Batch sizes depend on the connected integration.
 
-The assistant uses short keyword searches because BLOX is a keyword search, not a semantic search. Spaces act like `AND`, so a long natural-language question can become too restrictive. Date limits are sent through the date fields rather than placed in the search text.
+You can ask a natural-language question with a topic, place, and time range. The assistant adapts the search terms and date filters to the connected archive.
 
 ### Step 2: Relevance review
 
-The assistant deduplicates the summary results by `articleId` and decides which articles materially help answer the question.
+The assistant removes duplicate summary results and decides which articles materially help answer the question.
 
 An article is relevant when it contributes at least one of the following:
 
@@ -63,7 +65,7 @@ There is no fixed top-three or top-ten cutoff. Every materially relevant article
 
 ### Step 3: Full article retrieval
 
-The assistant calls `blox_get_article` for each relevant `articleId`.
+The assistant retrieves the full text of each relevant article.
 
 Full articles are fetched sequentially, not in parallel. Before every fetch, the assistant checks whether the conversation is nearing its context limit. This prevents a group of large article bodies from overflowing the available context at once.
 
@@ -132,7 +134,7 @@ For a question such as "How did the downtown redevelopment plan develop, and wha
 
 Standard Research searches a page of full articles and begins synthesis from those results.
 
-Deep Archive Search first scans up to 50 compact summaries, pages farther if relevant coverage continues, identifies the articles that mark decisions and changes in the project, retrieves each relevant full article sequentially, and then writes the timeline from the complete fetched evidence.
+Deep Archive Search first scans compact summaries, pages farther if relevant coverage continues, identifies the articles that mark decisions and changes in the project, retrieves each relevant full article sequentially, and then writes the timeline from the complete fetched evidence.
 
 ## What Does Not Change
 
@@ -143,16 +145,23 @@ Both prompts:
 - Follow the same keyword and date-filter rules.
 - Require source-backed factual claims.
 - Preserve the same citation, carousel, and follow-up components.
-- Use external search only when local coverage is absent, incomplete, or the user asks for broader context.
+- Use Google only when local coverage is absent, incomplete, or the user asks for broader context.
+
+### NewsBank Deep Search
+
+**Deep Archive Search NewsBank** reviews summaries from the configured NewsBank archive, then reads relevant full articles individually. Its Coverage Note describes completed and pending coverage. NewsBank can be connected alongside your publication's CMS; select the flavor for the archive you want to research.
+
+Unlike the CMS archive flavors, NewsBank flavors do not use Google as an alternative evidence source. Google can suggest search keywords, but reporting facts, citations, links, and images must come from retrieved NewsBank articles.
 
 ## Configuration Note
 
 A project using this workflow must:
 
-- Select the `discover/local/Deep Archive Search` prompt flavor.
-- Allow the `blox_search_summary` tool.
-- Allow the `blox_get_article` tool.
-- Have working BLOX CMS credentials for full article retrieval.
+- Select **Prompt type** `discover`, **Prompt subtype** `local`, and **Prompt flavor** **Deep Archive Search**.
+- Have a working connection to the intended publication archive.
+- Support both summary discovery and full-article reading through that connection.
+
+For **Deep Archive Search NewsBank**, select that flavor and ask your administrator to confirm the intended NewsBank archive and full-article access.
 
 Existing projects using `discover/local/normal` continue to use the original Standard Research behavior.
 
@@ -161,19 +170,25 @@ Existing projects using `discover/local/normal` continue to use the original Sta
 
 ### Evidence and sources
 
-_look at the number of review articles with the current normal discover_
+Compare the reviewed-article count with Standard Research below. Scanned summaries are not the same as full articles fetched or sources cited.
+Open **Evidence & Sources** to inspect **References**, **Search trail**, and **Reviewed articles**.
+
 ![Evidence and sources from Deep Archive Search](images/discover/evidence-2steps.png)
 
 ## Example with Standard Research
 ![Coverage from Standard Research](images/discover/coverage-normal.png)
 
 ### Evidence and sources
-_look at the number of review articles with the current normal discover_
+Standard Research can review more than one batch. The reviewed-article count is not limited to the initial 20 results.
+Use the same **Evidence & Sources** sections to inspect the articles reviewed and cited.
+
 ![Evidence and sources from Standard Research](images/discover/evidence-normal.png)
 
-## comparison
+## Example comparison
+
+These screenshots illustrate two particular searches, not guaranteed result counts or performance benchmarks. Check each answer's Coverage Note and search trail for its actual scope.
 
 | Workflow | Reviewed articles | References used | Span |
 |---|---:|---:|---|
-| Normal | 39 | 6 | **3 months** |
+| Standard Research (`normal`) | 39 | 6 | **3 months** |
 | Deep Archive Search | 191 | 11 | **2 years** |
