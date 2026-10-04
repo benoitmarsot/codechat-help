@@ -19,7 +19,7 @@ If the page says **No projects found**, create a project if **New Project** is a
 
 ## Create a project
 
-Select **New Project** to open the **Deep Archive Search** wizard.
+Select **New Project** to open the Create Project wizard.
 
 ### Step 1: Project Setup
 
