@@ -10,14 +10,13 @@ Gather the following before creating records:
 
 - organization name;
 - outlet name and public-facing publication name;
-- CMS connection profile name or slug;
+- shared connection `profile_name`, as configured for each archive provider the outlet uses;
 - public site URL;
 - CMS API URL, when authenticated CMS lookups are required;
 - deployment-managed environment variable references for the CMS key and secret;
-- earliest reliable archive coverage date;
-- coverage area, communities, local beats, and a short local-impact phrase;
-- representative people, organizations, topics, headlines, and dates for prompt examples;
-- NewsBank profile and source filter, when that source is part of the outlet configuration;
+- earliest reliable primary CMS archive date and, when used, the independent NewsBank archive date;
+- coverage geography and communities for `coverage_area_description`;
+- authorized NewsBank source names, when actual source filtering is required (not an outlet prompt variable);
 - approved development, staging, preview, and production domains for Engage;
 - initial administrator and user names, email addresses, and roles; and
 - several questions whose answers and source articles are already known.
@@ -38,19 +37,19 @@ See [Create or select an outlet](admin-outlets.md#create-or-select-an-outlet) fo
 
 ## 3. Complete outlet prompt variables
 
-Prompt variables adapt Discover and Engage instructions to the publication. Each group saves independently.
+The outlet-variable section is provider-neutral. **Discover + Engage / Local** is one shared editor; saving once updates both workflows.
 
-1. Complete every required field in **Discover / Local**.
-2. Use the exact CMS connection profile supplied by your deployment administrator. For a BLOX integration, this is the `blox_profile_name` field.
-3. Enter the publication's public name and the contextual and search names that should appear in generated text.
-4. Enter `coverage_start_date` as `YYYY-MM-DD`.
-5. Describe the outlet's geography, communities, beats, and local relevance in concrete language.
-6. Use real, representative entities and headlines for examples, but do not enter sensitive or unpublished information.
-7. Complete **Engage / Local** with the public-facing publication name and abbreviation.
-8. Keep the CMS connection profile identical across groups. For example, every `blox_profile_name` value must match when using BLOX.
-9. Select **Save variables** in each group you changed.
+1. Open the **Discover + Engage / Local** editor.
+2. Enter the exact connection profile supplied by your deployment administrator in **Profile Name** (`profile_name`), regardless of provider.
+3. Enter the publication's public name in **Publication Name** (`publication_name`). It also supplies publisher text and citation labels.
+4. Enter the primary CMS archive start in **Coverage Start Date** (`coverage_start_date`) as `YYYY-MM-DD`.
+5. When using NewsBank, enter its archive start separately in **NewsBank Coverage Start Date** (`newsbank_coverage_start_date`). A valid date is required for NewsBank workflows and need not match the primary CMS date.
+6. Describe the outlet's geography and communities in **Coverage Area Description** (`coverage_area_description`). This is also the default local query scope.
+7. Select **Save variables** once. Both local workflows receive the shared values; each provider's prompts use its own archive start date.
 
-Conflicting CMS profile values prevent the connection profile from resolving. Reload the outlet configuration and confirm the saved values before continuing.
+Do not collect or configure local search entities, example headlines or dates, publication aliases, an abbreviation, or a local-impact phrase. Search and citation examples are shared fictional text, and local-impact wording is shared. NewsBank source-filter syntax is illustrated directly in its prompt; real filters must use authorized source names.
+
+When legacy local values conflict, Discover takes precedence; Engage supplies values missing from Discover. Review the merged values and save once to synchronize both workflows. If multiple CMS providers are used, their authorized configurations must use the same profile name. Reload the outlet configuration and confirm the saved values before continuing. If deprecated fields or separate local editors still appear, ask the deployment administrator to deploy the update and apply the outlet-variable migration before proceeding.
 
 See [Complete prompt variables](admin-outlets.md#complete-prompt-variables) for field guidance.
 
