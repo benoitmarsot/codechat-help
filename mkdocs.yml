@@ -28,6 +28,7 @@ nav:
       - Discover:
           - Overview: discover.md
           - Getting Started: discover-getting-started.md
+          - CMS Prerequisites: discover-prerequisites.md
           - Projects & Collaboration: discover-projects.md
           - Prompt Subtypes & Flavors: discover-prompt-options.md
           - Interface Guide: discover-interface.md

@@ -25,6 +25,12 @@ Each feedback card can include:
 
 Select the chevron on **Answer** to expand or collapse the response. Feedback is read-only in this workspace, so use it as evidence for follow-up with users, content review, or configuration changes in the relevant outlet.
 
+Select **Go to answer** to open the original conversation at the rated response.
+The linked answer is highlighted, and you can scroll to earlier and later messages
+for context. This action uses your existing project and discussion access; it does
+not grant additional permissions. If the
+answer is no longer available, the discussion opens with a warning.
+
 If no entries are available, the page displays **No feedback has been submitted.**
 
 [Back to administration overview](admin.md)
