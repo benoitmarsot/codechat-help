@@ -85,7 +85,7 @@ Example: "What does the configured NewsBank archive report about the downtown re
 Choose this for a broad archive question when the NewsBank summary and public-article connection is configured.
 
 - Scans summaries from the configured NewsBank archive.
-- Reads relevant full articles one at a time.
+- Reads relevant full articles from the queue; retrieval scheduling depends on the configured workflow.
 - Uses the same summary-first approach and reporting-brief presentation as **Deep Archive Search**.
 - Keeps the NewsBank-only evidence rule: Google is for keyword discovery, not an alternative reporting source.
 
@@ -101,6 +101,13 @@ For local projects, **Story Mode** searches the same connected CMS archive as **
 - **Reporting Brief:** defaults to a brief emphasizing evidence and next reporting steps. It can also follow a requested output format, such as a lede or story draft; these names describe intended uses, not exclusive capabilities.
 
 Example: "Draft an obituary of [name] from our archive coverage, citing sources and identifying details that still need verification."
+
+Outlet content permissions take precedence over either flavor's presentation
+guidance in Discover Skills workflows. When publishable content is blocked,
+drafting requests receive a reporting brief instead. When verbatim article
+quotes are blocked, generated editorial content must paraphrase supported
+information with citations. See
+[Discover content permissions](admin-outlets.md#configure-discover-content-permissions).
 
 Neither flavor replaces a reporter's verification, fairness checks, or editorial judgment.
 

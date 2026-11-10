@@ -9,7 +9,7 @@ This page walks through the main Discover screen, the user control panel, and th
 *Screenshot placeholder — annotated main screen (callouts 1–7 below).*
 
 1. **Home button** — returns you to the Discover home screen.
-2. **Project name** — the project where your queries and response library are stored. Each user has their own, based on username and password.
+2. **Project name** — identifies your current research workspace. A project groups discussions, connected sources, and assistant settings. Projects can be personal or shared with colleagues. Your membership and permissions determine which projects you can access.
 3. **New discussion** — start a new topic thread.
 4. **Query history** — a list of past discussions. Queries can be favorited, which shows a star in the index and lists them under the **Favorites** tab.
 5. **Query response field** — where content, links, and data are returned to you.

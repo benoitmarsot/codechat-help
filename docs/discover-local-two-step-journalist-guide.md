@@ -11,11 +11,13 @@ For CMS search rules, summary differences, and examples of where each mode can f
 It separates discovery from evidence gathering:
 
 1. Scan compact article summaries across a wider result set.
-2. Identify every article that materially relates to the question.
-3. Fetch those full articles one at a time.
-4. Write the answer from the full reporting.
+2. Identify relevant candidates from those summaries.
+3. Queue relevant articles and retrieve their full text within the project's research budgets.
+4. Write the answer from the full-article evidence accepted into the answer's context.
 
-This improves recall while keeping the model's working context under control.
+This supports broader discovery while keeping the model's working context under
+control. It does not guarantee that every relevant article in the archive will
+be discovered or read.
 
 ## Standard Research Versus Deep Archive Search
 
@@ -23,13 +25,16 @@ This improves recall while keeping the model's working context under control.
 |---|---|---|
 | Initial search | Searches full articles | Searches article summaries |
 | Initial result | Full article content | Headlines and summaries |
-| Normal page size | 20 articles | 50 summaries |
-| Full article retrieval | Included in the search result | Relevant articles read individually |
+| Typical starting batch | 20 articles | 50 summaries |
+| Full article retrieval | Included in the search result | Relevant articles read from a queue; runtime-managed workflows support bounded parallel retrieval |
 | Selection process | Reviews the full articles returned by search | Reviews summaries first, then builds a relevant-article queue |
 | Context use | Higher per search result | Lower during discovery |
 | Best fit | Narrow or straightforward searches | Timelines, backgrounders, broad topics, and archive research |
 
-Standard Research is the `normal` flavor. Deep Search requires the **Deep Archive Search** flavor and an archive connection that supports summary search and full-article reading.
+Standard Research is the **Reporting Brief** (`normal`) flavor. Deep Search
+requires the **Deep Archive Search** flavor and an archive connection that
+supports summary search and full-article reading. Batch sizes and retrieval
+scheduling depend on the integration and project configuration.
 
 ## How Deep Archive Search Works
 
@@ -53,7 +58,10 @@ You can ask a natural-language question with a topic, place, and time range. The
 
 ### Step 2: Relevance review
 
-The assistant removes duplicate summary results and decides which articles materially help answer the question.
+The workflow removes duplicate summary results and reviews which articles
+materially help answer the question. When runtime-managed classification is
+enabled, parallel model workers review batches of summaries; otherwise the
+main model handles relevance decisions.
 
 An article is relevant when it contributes at least one of the following:
 
@@ -63,19 +71,30 @@ An article is relevant when it contributes at least one of the following:
 - Evidence that confirms or contradicts another article
 - Names, dates, amounts, quotations, or records needed for the answer
 
-There is no fixed top-three or top-ten cutoff. Every materially relevant article is added to the fetch queue.
+Articles classified as relevant enter the fetch queue rather than an arbitrary
+top-three or top-ten list. Research budgets can still stop discovery or review
+before all candidates have been processed. A summary is not full-article evidence.
 
 ### Step 3: Full article retrieval
 
-The assistant retrieves the full text of each relevant article.
+The workflow retrieves full text from the relevant-article queue.
 
-Full articles are fetched sequentially, not in parallel. Before every fetch, the assistant checks whether the conversation is nearing its context limit. This prevents a group of large article bodies from overflowing the available context at once.
+In runtime-managed Skills workflows, a bounded number of articles can be fetched
+in parallel. Completed articles are considered in queue order, with context and
+research-budget checks before their full text is accepted into the answer.
+Fetching an article does not guarantee that its body fits in the remaining
+context. Model-managed configurations can still retrieve articles one at a time.
 
-After each successful fetch, the assistant records the completed article and removes it from the pending queue. The same article is not fetched twice in one answer.
+Accepted evidence and pending work are tracked separately. Supported continuation
+uses the recorded progress rather than starting the research queue over.
+Concurrency is a configuration detail, not the defining difference between
+Standard Research and Deep Archive Search.
 
 ### Step 4: Answer and sourcing
 
-The final answer is based on the fetched full articles, not only on the summaries. Summaries are used to decide what to retrieve, while full articles provide the evidence for detailed factual claims.
+The final answer is based on full articles accepted into its context, not only
+on summaries or a successful retrieval count. Summaries help decide what to
+retrieve; accepted full reporting supports detailed factual claims.
 
 The answer keeps the same newsroom-oriented structure as the normal prompt, including:
 
@@ -89,22 +108,30 @@ The answer keeps the same newsroom-oriented structure as the normal prompt, incl
 
 ## What Happens Near the Context Limit
 
-If the system warns that the context is nearing its limit, the assistant stops all additional searches and article fetches.
+When the workflow reaches its context or research budget, it stops further
+research and uses the full evidence already accepted. In-flight retrieval does
+not authorize adding article text that exceeds the remaining context.
 
 It then:
 
-1. Answers from the full articles already retrieved.
+1. Answers from the full articles already accepted as evidence.
 2. Reports how many summaries were scanned.
 3. Reports how many relevant articles were identified and fetched.
 4. Reports how many relevant articles remain pending.
-5. Offers to resume the pending queue without fetching completed articles again.
-6. Continues searching farther back in time only after the pending queue is complete.
+5. Offers explicit continuation when the configured workflow supports it.
+6. On continuation, works through the pending queue before expanding discovery.
 
-Unfetched summaries may describe the remaining coverage, but they should not support detailed factual claims.
+Continuation happens in a follow-up request, not as an automatic background
+search. Review the Coverage Note for completed work, remaining candidates,
+retrieval failures, and the reason research stopped. Summaries without accepted
+full text should not support detailed factual claims.
 
 ## What Journalists Will Notice
 
-A Deep Archive Search answer may take more tool calls than a Standard Research answer because relevant articles are retrieved individually. In return, it can inspect a broader set of candidates before spending context on full text.
+A Deep Archive Search answer separates summary discovery, relevance review, and
+full-article reading. It can inspect a broader set of candidates before spending
+context on full text, but that extra work can take longer. Parallel classification
+or retrieval can reduce waiting; neither guarantees complete coverage.
 
 The Coverage Note should make the process visible. A completed answer may say:
 
@@ -136,7 +163,11 @@ For a question such as "How did the downtown redevelopment plan develop, and wha
 
 Standard Research searches a page of full articles and begins synthesis from those results.
 
-Deep Archive Search first scans compact summaries, pages farther if relevant coverage continues, identifies the articles that mark decisions and changes in the project, retrieves each relevant full article sequentially, and then writes the timeline from the complete fetched evidence.
+Deep Archive Search first scans compact summaries, reviews candidates for
+relevance, and queues articles that explain decisions and changes in the project.
+The configured workflow retrieves their full text, using bounded parallelism
+when runtime-managed retrieval is enabled. It then writes the timeline from
+accepted full evidence and discloses any remaining coverage.
 
 ## What Does Not Change
 

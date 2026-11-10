@@ -76,8 +76,9 @@ Project prompt choices must also match their source connections. See [Prompt Sub
 
 ## Configure Discover content permissions
 
-**Content Permissions - Discover** applies only to the Discover Skills execution path.
-It does not change legacy prompts or Engage.
+**Content Permissions - Discover** controls content generation in the Discover Skills
+execution path. Engage Voice also receives these outlet restrictions. The controls
+do not change legacy Discover prompts or text Engage.
 
 Both switches default to **OFF** for new and existing outlets. Missing saved settings
 also mean OFF, so article drafting remains available by default.
@@ -165,7 +166,7 @@ Engage security controls which website domains may embed or call Engage for the 
 2. Enter allowed domains separated by commas, spaces, or new lines.
 3. When a **Site URL** is available, select **Apply suggestion** to add the base domain and its wildcard subdomains.
 4. Review the list before enabling **Enforce allowed domains**.
-5. Select **Save Engage security**.
+5. Select **Save Engage settings**.
 
 A typical allowlist contains both forms:
 
@@ -178,21 +179,81 @@ When enforcement is on, Engage rejects requests whose origin or referrer is not 
 
 ### Enable Engage voice
 
-The Engage settings also provide **Enable Engage voice** and a separate **Voice
-model**. Voice is OFF by default. **GPT Realtime 2.1 Mini** is the initial,
-lower-cost choice; **GPT Realtime 2.1** must be selected explicitly. These models
-are voice-only and cannot replace a project's text-assistant model.
+Voice is opt-in and **OFF** by default. Select the outlet under **Admin > Outlets**,
+then configure its Engage settings.
 
-Before enabling voice, ask the deployment administrator to apply the updated
-dbcreator schema and skill seeds, configure OpenAI access, and enable an archive
-Skills workflow on the outlet's Engage project. The publisher must add
-`data-voice="true"` to its embed, optionally supplying `data-article-id` for
-current-story questions. Save the Engage settings after changing voice controls.
+Before enabling voice, ask the deployment administrator to:
+
+- Apply the current dbcreator schema and skill seeds, and deploy matching API,
+  publisher scripts, and, for LiveKit, voice-agent assets.
+- Enable an authorized archive Skills workflow on the outlet's Engage project.
+- Configure OpenAI access. Gemini also needs Google credentials; LiveKit needs a
+  deployed voice agent and matching LiveKit and worker credentials.
+- For browser or Inworld speech, confirm the Engage project's text responder and
+  its provider credentials. Inworld uses LiveKit Inference access and billing,
+  not a separate Inworld API key.
+
+#### Choose transport, speech output, and model
+
+1. Choose **Voice transport**: **OpenAI direct** or **LiveKit**.
+2. With LiveKit, choose **Speech output**.
+3. For realtime speech, choose **Voice model**. This field is not used for browser
+   or Inworld speech; those options use the Engage project's text responder.
+4. Turn on **Enable Engage voice**.
+5. Select **Save Engage settings**.
+
+| Voice transport | Speech output | Answer and speech configuration |
+| --- | --- | --- |
+| **OpenAI direct** | Realtime speech | **OpenAI Realtime 2.1 Mini** is the default. **Realtime 2.1** is an explicit higher-cost choice. |
+| **LiveKit** | **Realtime model speech** | Choose either OpenAI realtime model, or **Gemini 3.8 Live - Puck + GPT-Transcribe**. Gemini uses Google for answers and speech, and OpenAI for question transcription. |
+| **LiveKit** | **Browser local voice + Engage text model** | The project's text responder generates the answer; an installed local browser voice reads it aloud. Browser speech support and a local voice are required. There is no automatic paid-speech fallback. |
+| **LiveKit** | **Inworld Flash - Ashley + Engage text model** | The project's text responder generates the answer; LiveKit Inference provides Inworld speech with the Ashley voice. |
+
+Browser and Inworld speech both use OpenAI GPT-Transcribe for spoken questions.
+Local speech output does not make microphone transcription local. Transcription,
+answer generation, speech services, and LiveKit infrastructure can have separate
+charges. Realtime voice model choices do not replace the project's text model.
+
+The publisher adds `data-voice="true"` to the existing `<liquidamber-engage>`
+element and serves the page over HTTPS. Readers allow microphone access in their
+browser. An optional `data-article-id` supplies the authorized archive identifier
+for current-story questions; Engage does not scrape the visible page.
 
 Voice inherits the outlet's domain restrictions, connection binding and enabled
 content-generation restrictions. Disabling voice stops active sessions on the next
 server cleanup check. Existing text Engage is unaffected.
 
-See [Voice explanations](engage.md#8-voice-explanations-opt-in) for reader behavior.
+See [Engage Voice](engage.md#8-engage-voice-one-button-a-whole-newsroom) for the reader experience.
+
+### Review voice analytics
+
+From **Admin > Outlets**, select the outlet, then choose **Voice analytics**.
+This read-only page requires assistant-configuration permission (`assistant.modify`)
+for the selected outlet.
+
+- Set **Reporting window** to the last 1, 7, 14, or 31 days.
+- Set **Recent turns limit** to 50, 100, or 200 rows. This affects only the recent
+  list; summary counts cover all recorded inputs in the reporting window.
+- Use **Refresh** to reload the report.
+- Compare detected inputs, accepted questions, generated answers, completed
+  playback, failures, interruptions, and questions ended while waiting.
+- Review latency and estimated-cost comparisons by answer model, speech model,
+  transport, and voice. The breakdown also includes research context, p50/p95
+  latency, and measurement counts.
+- Inspect **Errors by configuration** and use **View metrics** on a recent turn
+  to see its recorded outcome and timing details.
+
+Client latency measures the received speech-stop event to observed playback.
+It can include an acknowledgement rather than the final explanation. Missing
+measurements appear as `-`, not zero, and percentiles apply to each group rather
+than the whole report. The page shows no audio or question text.
+
+Estimated cost per connected minute is not invoice billing. Cost samples use
+eligible ended sessions and differ from latency samples; connected time includes
+listening, waiting, and silence. Missing charges, including text-model and LiveKit
+infrastructure costs, are excluded, and Gemini estimates may be incomplete.
+
+If voice has been used but no inputs appear, ask the deployment administrator to
+check the analytics schema and the deployed API, worker, and publisher scripts.
 
 [Back to administration overview](admin.md)

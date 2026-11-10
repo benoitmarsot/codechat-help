@@ -26,7 +26,30 @@ LiquidAmber can help turn a broad reporting question into a searchable set of ar
 
 ## Does LiquidAmber write a story for me?
 
-LiquidAmber can help summarize material, develop a backgrounder, suggest reporting angles, or refine a draft. It is designed to empower journalists and the newsroom, not replace them. It is an editorial aid, not a substitute for reporting, verification, attribution, or editorial judgment. Reporters and editors remain responsible for the final work.
+When the outlet permits drafting, Discover can help develop or refine a story,
+obituary, profile, explainer, or other editorial draft from sourced material.
+Drafting availability depends on the outlet's content permissions, not just
+whether you select **Reporting Brief** or **Story Mode**.
+
+For Discover Skills workflows:
+
+- If **Block writing publishable content** is enabled, a request for an article,
+  lede, or other publishable copy receives a brief explanation and a reporting
+  brief instead. Research, summaries, timelines, and other permitted reporting
+  assistance remain available.
+- If **Block verbatim article quotes in generated editorial content** is enabled,
+  generated editorial content must paraphrase supported information with
+  citations rather than reuse article quotations. Source titles and citation
+  metadata remain available.
+
+Changing flavors or requesting a rewrite does not override these restrictions.
+Ask your outlet administrator about the active policy; see
+[Discover content permissions](admin-outlets.md#configure-discover-content-permissions).
+These controls do not change legacy Discover prompts.
+
+LiquidAmber supports journalists rather than replacing them. Generated material
+still requires reporting, verification, attribution, fairness checks, and
+editorial judgment. Reporters and editors remain responsible for the final work.
 
 ## How does LiquidAmber support source-grounded reporting?
 
@@ -45,11 +68,16 @@ Yes. LiquidAmber can interpret requests such as "last week," "between March and 
 For a timeline, backgrounder, or other wide-ranging question, LiquidAmber can use **Deep Archive Search**:
 
 1. Scan article summaries across a broad result set.
-2. Identify every article that materially contributes to the reporting question.
-3. Retrieve the relevant full articles one at a time.
-4. Produce an answer based on the retrieved reporting, with sources and remaining uncertainties.
+2. Review summaries for relevance and queue selected articles.
+3. Retrieve their full text. Runtime-managed Skills workflows support bounded
+   parallel retrieval; scheduling depends on the project's configuration.
+4. Produce an answer from the full evidence accepted into context, with sources,
+   remaining uncertainties, and a Coverage Note.
 
-This method favors complete, evidence-based coverage over a quick answer drawn from only a few recent results.
+This supports broader discovery, not a guarantee of exhaustive coverage. The
+Coverage Note distinguishes summaries scanned, full articles read, and remaining
+work. Supported workflows retain research progress for explicit continuation.
+See the [Deep Archive Search guide](discover-local-two-step-journalist-guide.md).
 
 ## What should I do when an answer has gaps?
 

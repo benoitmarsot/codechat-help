@@ -17,7 +17,10 @@ Gather the following before creating records:
 - earliest reliable primary CMS archive date and, when used, the independent NewsBank archive date;
 - coverage geography and communities for `coverage_area_description`;
 - authorized NewsBank source names, when actual source filtering is required (not an outlet prompt variable);
+- verified local-news category paths, IDs, or slugs for the selected CMS, when local filtering is needed;
+- the outlet's policy on generating publishable copy and reusing verbatim article quotes;
 - approved development, staging, preview, and production domains for Engage;
+- the voice transport, speech output, and provider setup when Engage Voice is part of the launch;
 - initial administrator and user names, email addresses, and roles; and
 - several questions whose answers and source articles are already known.
 
@@ -53,19 +56,40 @@ When legacy local values conflict, Discover takes precedence; Engage supplies va
 
 See [Complete prompt variables](admin-outlets.md#complete-prompt-variables) for field guidance.
 
+### Set content permissions
+
+1. Open **Content Permissions - Discover**.
+2. Enable **Block writing publishable content** if the outlet wants reporting
+   assistance rather than generated articles, ledes, or other publishable copy.
+3. When drafting is allowed, decide whether to enable **Block verbatim article
+   quotes in generated editorial content**.
+4. Select **Save permissions**.
+
+Both settings default to OFF. They apply to Discover Skills answers and also
+supply publisher restrictions to Engage Voice; they do not change legacy
+Discover prompts or text Engage. Selecting Story Mode does not override them.
+See [Configure Discover content permissions](admin-outlets.md#configure-discover-content-permissions).
+
 ## 4. Configure the CMS connection
 
-Section labels and available fields depend on the CMS integration. For example, a BLOX connection uses **Blox MCP Config** and **Blox profile** in the administration screen.
+Section labels and fields depend on the selected CMS integration. The connection
+card supports BLOX, public WordPress, and WordPress with Jetpack Search; NewsBank
+access is configured separately by the deployment administrator.
 
 1. Confirm the connection profile matches the intended outlet profile.
 2. Enter the outlet homepage in **Site URL**.
-3. Enter **CMS API URL** when the integration uses authenticated CMS lookups.
-4. Enter the approved environment variable reference in **CMS key** and **CMS secret** only when setting or replacing those values.
-5. Enable **Use local news mode** when the outlet should use local-news filtering behavior.
+3. For BLOX authenticated lookups, enter **CMS API URL** and approved environment variable references in **CMS key** and **CMS secret**. Set **Publication section** when searches must stay within one publication.
+4. For Jetpack, enter the numeric **Jetpack site ID**. Public WordPress needs no credentials.
+5. Enter **Local news categories (JSON array)** using verified BLOX category paths, WordPress numeric category IDs, or Jetpack category slugs. Leave `[]` when the local filter is not configured.
 6. Select **Save MCP config**.
 7. Confirm the section reports **Configured**.
 
 Stored credential values are hidden. Leave those fields blank on later edits to preserve the saved values.
+
+Local-news categories replace the former boolean switch. They are used only when
+the assistant explicitly requests local-news filtering; they do not automatically
+filter every search. Requesting the filter with an empty category list produces
+an error rather than an unrestricted search.
 
 **Configured** confirms that the profile has a saved configuration. It does not prove that the CMS endpoint, credential references, archive data, and search behavior are all correct. Complete the test questions in step 7 before launch.
 
@@ -91,7 +115,7 @@ Complete this step even when Engage will launch later, so the intended domain po
 1. In **Engage Security**, review the domain suggestions derived from **Site URL**.
 2. Add every approved host, including staging or preview hosts that must run Engage.
 3. Use both the base domain and wildcard subdomain form when both are required.
-4. Select **Save Engage security** with enforcement still off.
+4. Select **Save Engage settings** with enforcement still off.
 5. Ask the publisher's deployment team to test Engage from every approved environment.
 6. Enable **Enforce allowed domains** only after those tests pass.
 7. Save again, then verify an approved origin succeeds and an unapproved origin is rejected.
@@ -99,6 +123,30 @@ Complete this step even when Engage will launch later, so the intended domain po
 Do not use a wildcard broader than the publisher-controlled domain. Review the allowlist whenever a site, preview platform, or canonical hostname changes.
 
 See [Configure Engage security](admin-outlets.md#configure-engage-security) for accepted domain formatting and enforcement behavior.
+
+### Prepare Engage Voice when included in the launch
+
+1. Ask the deployment administrator to confirm current voice schema and published
+   skills, an authorized archive Skills workflow on the Engage project, and the
+   provider credentials required for the selected transport and speech output.
+   LiveKit also needs its deployed voice agent.
+2. Choose **Voice transport** and, for LiveKit, **Speech output**. Select
+   **Voice model** for realtime speech, or confirm the project's text responder
+   for browser or Inworld speech.
+3. Have the publisher add `data-voice="true"` to the existing Engage element on
+   an approved HTTPS page. Add `data-article-id` when current-story questions
+   need an authorized archive article identifier.
+4. Enable **Engage voice** and select **Save Engage settings**.
+5. Confirm that a reader can allow microphone access, hear a source-grounded
+   answer, inspect **Show sources**, and still open the text Engage panel.
+   Browser speech also requires an installed local voice on the reader's device.
+6. Open **Voice analytics** for the selected outlet and confirm recorded activity
+   appears. Review failures and missing playback measurements before handoff.
+
+If voice is not part of this launch, leave it OFF. See
+[Enable Engage voice](admin-outlets.md#enable-engage-voice) for the available
+configurations and [Review voice analytics](admin-outlets.md#review-voice-analytics)
+for interpreting the report.
 
 ## 7. Validate Discover with known questions
 
@@ -121,10 +169,12 @@ Confirm each item before handoff:
 
 - [ ] Organization and outlet names are correct.
 - [ ] All prompt-variable groups were saved and reloaded.
+- [ ] Content permissions match the outlet's editorial policy and were saved.
 - [ ] CMS connection profile values are present and consistent.
 - [ ] Site and CMS API URLs point to the intended environment.
 - [ ] Credential fields use approved environment variable references.
 - [ ] The CMS connection reports **Configured**.
+- [ ] Local-news categories, when configured, match the selected provider's taxonomy.
 - [ ] Initial users have the narrowest appropriate roles.
 - [ ] Invited users can activate their accounts.
 - [ ] Required users can open the correct project and start a discussion.
@@ -132,6 +182,8 @@ Confirm each item before handoff:
 - [ ] Citations open and support the claims beside them.
 - [ ] Engage domains include every approved environment.
 - [ ] Domain enforcement was enabled only after origin testing.
+- [ ] Engage Voice is OFF or its transport, speech output, model, and provider setup are confirmed.
+- [ ] When voice is enabled, microphone access, spoken answers, source display, and recorded analytics are confirmed.
 - [ ] The outlet administrator knows how to review [user feedback](admin-feedback.md).
 
 Record the test date, tester, outlet, project, questions, expected sources, and any unresolved issues in the organization's approved launch record. Do not record passwords, tokens, keys, or secrets.
@@ -144,7 +196,9 @@ Show the outlet administrator how to:
 - grant project access without broadening account roles;
 - review feedback and its supporting question and answer;
 - identify the selected outlet before changing variables;
-- preserve stored CMS credentials when editing connection settings; and
+- preserve stored CMS credentials when editing connection settings;
+- manage content permissions according to the outlet's editorial policy;
+- review voice settings and analytics when voice is enabled; and
 - request platform help for organization, outlet, or configuration changes outside their scope.
 
 Return to the [LiquidAmber administration overview](admin.md) for links to every administrative area.

@@ -19,12 +19,11 @@ LiquidAmber Engage brings LiquidAmber's research and verification capabilities t
 ![Publisher page with an inline Engage search field](images/engage/inline-search.png)
 *Screenshot placeholder, inline embedded Engage search field on a publisher page.*
 
-Engage is delivered as a single custom element, `<liquidamber-engage>`, loaded through a small script tag. A publisher can present it in either of two modes:
+Engage is delivered as a single custom element, `<liquidamber-engage>`, loaded through a small script tag. Its search field sits directly in the publisher's page, for example above an article or in a sidebar.
 
-- **Embedded mode** (default): the widget sits directly in the page layout, for example a search field placed above an article or in a sidebar. A reader types a question and taps **Ask** without leaving the page.
-- **Overlay mode** (coming soon): a publisher-chosen element, such as an "Open Engage" button in a header or nav bar, opens the widget as a panel over the page. This gives a publisher a single, site-wide entry point.
+A reader types a question and selects **Ask**. Engage opens a panel over the page to show the answer, sources, and follow-up questions without navigating away from the site. Closing the panel returns the reader to the publisher's page.
 
-Both modes call the same backend and produce the same answer experience once a question is asked.
+A publisher can also add an **Open Engage** button in a header or navigation bar. This opens the same Engage panel, giving readers another way to reach the conversation.
 
 ## 2. Asking a question and getting an answer
 
@@ -66,7 +65,8 @@ Engage is built to disappear into a publisher's own design rather than stand out
 Turning Engage on for an outlet is an administrative task, not something a reader configures:
 
 - An outlet admin supplies the partner identifier, site key, and backend API URL, and maintains the list of domains allowed to embed the widget. See [Configure Engage security](admin-outlets.md#configure-engage-security).
-- A publisher's engineering team adds the `<liquidamber-engage>` element and its loader script to the page(s) where Engage should appear, choosing embedded or overlay mode and, for overlay mode, the element that should trigger it.
+- A publisher's engineering team adds the `<liquidamber-engage>` element and its loader script to the page(s) where Engage should appear. The element uses its default configuration; no `mode` or `trigger` attribute is required.
+- An optional **Open Engage** button can call the component's `open()` method to open the same panel.
 - The widget's assets can be preloaded in the background so there's no delay the first time a reader opens it.
 
 ## 8. Engage Voice: one button, a whole newsroom
