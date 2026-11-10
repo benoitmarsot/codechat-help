@@ -6,6 +6,8 @@ Deep Archive Search is designed for questions that may require reviewing a broad
 
 This is the **Deep Search** mode shown as **Deep Archive Search** in the flavor picker. **Deep Archive Search NewsBank** applies the same summary-first approach to its configured NewsBank connection. For all subtype and flavor choices, see [Prompt Subtypes and Flavors](discover-prompt-options.md).
 
+For CMS search rules, summary differences, and examples of where each mode can fall short, see [Normal vs Deep Search](discover-normal-vs-deep-search.md).
+
 It separates discovery from evidence gathering:
 
 1. Scan compact article summaries across a wider result set.

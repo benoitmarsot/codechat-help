@@ -10,6 +10,7 @@ LiquidAmber Engage brings LiquidAmber's research and verification capabilities t
 - Keeps citations and links visible so readers can see the source behind an answer.
 - Summarizes how much coverage backs an answer (how many articles were reviewed and the date range they span), with any related photos shown alongside it.
 - Suggests relevant follow-up questions so a reader can keep exploring a topic without typing a new query.
+- Offers a voice-led way to explore stories and hear explanations while staying on the publisher's site. See [Engage Voice](#8-engage-voice-one-button-a-whole-newsroom).
 - Runs as an embeddable widget that publishers control, without giving up editorial control over the underlying content.
 - Adapts to the host page's colors and fonts, so it reads as part of the site rather than a bolted-on tool.
 
@@ -67,3 +68,60 @@ Turning Engage on for an outlet is an administrative task, not something a reade
 - An outlet admin supplies the partner identifier, site key, and backend API URL, and maintains the list of domains allowed to embed the widget. See [Configure Engage security](admin-outlets.md#configure-engage-security).
 - A publisher's engineering team adds the `<liquidamber-engage>` element and its loader script to the page(s) where Engage should appear, choosing embedded or overlay mode and, for overlay mode, the element that should trigger it.
 - The widget's assets can be preloaded in the background so there's no delay the first time a reader opens it.
+
+## 8. Engage Voice: one button, a whole newsroom
+
+Engage Voice turns the news site into a conversation. Ask what a story means, explore the reporting
+behind it, and discover what to read next, all through a natural conversation.
+It brings that experience directly into the publisher's own site:
+one place to read, listen, and explore.
+
+### Start with one button
+
+Choose **Start voice** and allow microphone access when your browser asks.
+Then speak naturally:
+
+- "What is this story about?"
+- "Why does this matter to our community?"
+- "What happened before this?"
+
+Hear an explanation grounded in the publication's reporting, then ask a follow-up
+in your own words. There is no separate app to open or question to type.
+
+### Change the story, not the page
+
+In this single-page news experience, the article changes while the
+site and voice controls stay in place. Select another story or ask to explore
+related reporting, and the reading area brings that article into view without
+loading a new page.
+
+The conversation becomes a companion to your reading. Move from today's headline
+to its background, compare coverage, and follow a developing story without
+leaving the publication's experience.
+
+### From a headline to a deeper understanding
+
+Start with a story about a local transport proposal. Ask, "What would this change
+for commuters?" Then follow with, "How does that compare with last year's plan?"
+Explore the related article in the same reading area and keep asking questions.
+
+The value is not simply hearing an article aloud. It is being able to ask for
+context, clarification, and connections across the newsroom's reporting.
+
+### Keep the reporting within reach
+
+Choose **Show sources** to see the reporting behind an answer, or **Open full
+view** to read the discussion in more detail. Spoken explanations and visible
+evidence work together: readers can listen for understanding and inspect the
+sources for themselves.
+
+Use **Mute microphone** when you want to listen without speaking, or **End voice**
+when you are finished. You choose when to participate.
+
+### The publisher's voice, on the publisher's site
+
+Engage Voice extends the publication's relationship with its readers rather than
+sending them somewhere else. The publisher's reporting remains at the center,
+with an experience that fits the site's own look and feel.
+
+**One button opens the conversation. The newsroom gives it depth.**

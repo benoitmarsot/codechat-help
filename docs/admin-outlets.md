@@ -2,7 +2,7 @@
 
 Use **Admin > Outlets** to maintain the organization hierarchy and the configuration Discover and Engage use for each outlet.
 
-The page requires outlet-management access. Editing prompt variables, CMS connection settings, or Engage security also requires assistant-configuration access. If you can open the page but the settings are read-only, ask a platform administrator to review that permission.
+The page requires outlet-management access. Editing prompt variables, content permissions, CMS connection settings, or Engage security also requires assistant-configuration access. If you can open the page but the settings are read-only, ask a platform administrator to review that permission.
 
 ## Create or select an outlet
 
@@ -24,13 +24,14 @@ Both actions require confirmation. Resolve dependencies instead of deleting acti
 
 ## Configure an outlet
 
-After you select an outlet, its prompt-variable groups, CMS connection configuration, and Engage security configuration load together. The outlet variables appear first, followed by connection settings and Engage security. **Reload outlet config** discards unsaved field changes and reloads the saved values.
+After you select an outlet, its prompt-variable groups, content permissions, CMS connection configuration, and Engage security configuration load together. The outlet variables appear first, followed by content permissions, connection settings, and Engage security. **Reload outlet config** discards unsaved field changes and reloads the saved values.
 
 For a new outlet, use this order:
 
 1. Complete and save the shared **Discover + Engage / Local** variables and any other required prompt-variable groups.
-2. Verify the resolved outlet profile and save the CMS connection configuration.
-3. Add allowed Engage domains, then enable enforcement when the list is ready.
+2. Configure **Content Permissions - Discover** if the outlet needs content-generation restrictions.
+3. Verify the resolved outlet profile and save the CMS connection configuration.
+4. Add allowed Engage domains, then enable enforcement when the list is ready.
 
 ## Complete prompt variables
 
@@ -73,18 +74,84 @@ If older fields or separate local editors still appear, ask the deployment admin
 
 Project prompt choices must also match their source connections. See [Prompt Subtypes and Flavors](discover-prompt-options.md#connected-tools-and-configuration) for CMS archive, NewsBank, international, and Deep Search requirements.
 
+## Configure Discover content permissions
+
+**Content Permissions - Discover** applies only to the Discover Skills execution path.
+It does not change legacy prompts or Engage.
+
+Both switches default to **OFF** for new and existing outlets. Missing saved settings
+also mean OFF, so article drafting remains available by default.
+
+- **Block writing publishable content:** when ON, requests for full articles, story
+  drafts, ledes, nut grafs, or publishable copy receive a brief acknowledgement that
+  the requested finished form cannot be provided, followed by a reporting brief.
+  The brief uses **Verified Facts**, **Supporting Sources**, **What Is Still Unclear**,
+  **Who To Call Next**, **Records To Get**, and **Possible Angles**. It must not contain
+  finished article sections or offer blocked drafting through follow-up actions.
+- **Block verbatim article quotes in generated editorial content:** when ON, Discover
+  must paraphrase supported information with citations rather than reuse verbatim
+  article quotes in generated articles or other editorial content. Source titles
+  and citation metadata are preserved. This control is editable only when writing
+  publishable content is not blocked; disabling the control retains its saved value.
+
+Select **Save permissions** to persist both settings. Changes apply to subsequent
+Discover Skills answers, including resumed research. Unsaved changes have no effect.
+Only enabled restrictions are inserted dynamically into generation instructions,
+with precedence over drafting and Classic presentation guidance. When both settings
+are OFF, no restriction text is added to the prompt.
+
+The writing restriction applies to the purpose of the requested output, not a
+keyword list or minimum length. A short story request, such as a 200-word story,
+still requires a reporting brief instead. Rewrites, examples, citations, and
+disclaimers must not be used to deliver otherwise prohibited editorial drafts.
+Permissible research, summaries, timelines, explanations, comparisons, and tables
+keep their appropriate formats; not every answer becomes a reporting brief.
+
+When a restriction is enabled, the instructions also require the main model to
+check its answer and follow-up actions before returning them. This check happens
+within the normal generation call. It is prompt-level guidance, not an independent
+reviewer or a deterministic output gate.
+
+The settings are stored in the outlet properties:
+
+```json
+{
+  "contentPermissions": {
+    "blockPublishableContent": false,
+    "blockArticleQuotes": false
+  }
+}
+```
+
 ## Configure the CMS connection
 
-The CMS connection settings connect the selected outlet profile to its public site and, when used, its authenticated CMS endpoint. The current **Blox MCP Config** card edits the BLOX integration only; it is separate from the provider-neutral outlet variables and does not configure NewsBank or other providers.
+The CMS connection settings connect the selected outlet profile to its public site and, when used, its authenticated CMS endpoint. The card supports BLOX, public WordPress, and WordPress with Jetpack Search, according to the outlet's selected CMS provider. It does not configure NewsBank.
 
 ![Blox MCP configuration for the selected outlet](images/admin/outlet-blox-mcp-config.png)
 
 1. Confirm the connection profile matches the intended outlet.
 2. Enter the public homepage in **Site URL**.
-3. If authenticated CMS lookups are enabled, enter **CMS API URL**.
-4. Supply **CMS key** and **CMS secret** as environment variable references provided by your deployment administrator.
-5. Enable **Use local news mode** when this profile should apply local-news filtering.
+3. For BLOX authenticated lookups, enter **CMS API URL**, **CMS key**, and **CMS secret**. Use environment variable references for credentials. An optional **Publication section** always limits public searches and article lookups to that publication.
+4. For Jetpack, enter the numeric **Jetpack site ID**. Public WordPress needs no credentials.
+5. Enter **Local news categories (JSON array)** using the provider's actual taxonomy:
+   - BLOX: category paths, for example `["news/local", "news/local-briefs"]`.
+   - WordPress: numeric category IDs, for example `[7]` (saved as strings).
+   - Jetpack: category slugs, for example `["news-stories", "news-briefs"]`.
 6. Select **Save MCP config** and confirm the status changes to **Configured**.
+
+The categories are stored as `localNewsCategories` in the profile's MCP configuration,
+replacing the old `useLocalNews` boolean. Searches match **any** configured category.
+The model must explicitly request `use_local_news: true`; omitting it or setting it
+to `false` leaves normal search behavior unchanged. This works for full searches,
+summaries, Jetpack ranked discovery, and canonical archive searches. Recent stories
+are not automatically filtered. Pagination must keep the same local-news argument.
+An empty array `[]` means the local filter is unconfigured: requesting it returns
+an explicit error rather than silently searching all stories.
+
+Use only verified taxonomy values. Sites that have not allowlisted the application
+user-agent may block public search; leave their categories unconfigured until access
+is available. A publisher's category is an editorial classification, not a guarantee
+that every story concerns only its immediate locality.
 
 Stored CMS credentials are hidden. Leave a credential field blank to preserve its existing value; enter a value only to replace it. Additional configuration properties that are not shown in the form are preserved when you save.
 
@@ -108,5 +175,24 @@ example.com
 ```
 
 When enforcement is on, Engage rejects requests whose origin or referrer is not in the allowlist. Keep enforcement off until every production and approved preview domain is represented.
+
+### Enable Engage voice
+
+The Engage settings also provide **Enable Engage voice** and a separate **Voice
+model**. Voice is OFF by default. **GPT Realtime 2.1 Mini** is the initial,
+lower-cost choice; **GPT Realtime 2.1** must be selected explicitly. These models
+are voice-only and cannot replace a project's text-assistant model.
+
+Before enabling voice, ask the deployment administrator to apply the updated
+dbcreator schema and skill seeds, configure OpenAI access, and enable an archive
+Skills workflow on the outlet's Engage project. The publisher must add
+`data-voice="true"` to its embed, optionally supplying `data-article-id` for
+current-story questions. Save the Engage settings after changing voice controls.
+
+Voice inherits the outlet's domain restrictions, connection binding and enabled
+content-generation restrictions. Disabling voice stops active sessions on the next
+server cleanup check. Existing text Engage is unaffected.
+
+See [Voice explanations](engage.md#8-voice-explanations-opt-in) for reader behavior.
 
 [Back to administration overview](admin.md)

@@ -6,6 +6,8 @@ This guide uses **Reporting Brief** for `normal` and **Story Mode** for `classic
 
 **Deep Archive Search** and **Deep Archive Search NewsBank**, previously referred to as Deep Search, review summaries first, then read relevant full articles.
 
+See [Normal vs Deep Search](discover-normal-vs-deep-search.md) for search mechanics, CMS differences, limitations, and examples to help choose a mode.
+
 ## Quick chooser
 
 | Your research need | Prompt subtype | Prompt flavor |
