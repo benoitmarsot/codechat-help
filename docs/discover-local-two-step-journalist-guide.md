@@ -137,10 +137,34 @@ These commands control research effort, not the length or style of the answer.
 
 | Request | Behavior |
 |---|---|
+| **Research [topic]** | Searches for evidence and answers when sufficient evidence is available; ordinary research behavior is unchanged. |
+| **Research [topic] in depth** | Starts repeated discovery, relevance review, and full-article reading rounds from the first request, while useful work remains and safety limits permit. |
 | **Continue** or **Continue one round** | Processes one additional research round, then answers. This is the default continuation mode. |
 | **Continue in depth** | Repeats discovery, relevance review, and full-article reading while useful work remains and safety limits permit. |
 | **Summarize what you have already found without more research** | Reuses retained evidence without searching for or retrieving additional articles. You can also ask to explain, rewrite, or reorganize those findings. |
 | **Start independent research on [topic]** | Starts a separate research workflow rather than extending the previous topic's queue. |
+
+### Research in depth from the start
+
+Use **Research [topic] in depth** when you want a broader investigation immediately,
+rather than an initial answer followed by repeated continuation requests. For example:
+
+> Research how city council priorities changed from 2019 to 2026 in depth.
+
+The workflow reviews discovered summaries for relevance, reads the selected
+relevant articles, then follows additional pages or investigates useful coverage
+gaps. It stops when useful research is complete, further searches make no
+meaningful progress, or a safety limit requires an answer.
+
+This does not mean reading every article in the archive. Search can miss
+articles, summaries can omit important details, and relevant articles may remain
+pending when a limit is reached. Check the Coverage Note for what was actually
+read and what remains. In-depth research can take longer and use more research
+budget; it does not simply request a longer answer.
+
+You can later use **Continue one round** or **Continue in depth** regardless of
+how the research started. An ordinary **Research [topic]** request does not
+automatically opt into in-depth behavior.
 
 ### Continue one round
 
