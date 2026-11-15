@@ -52,7 +52,10 @@ Each result contains enough information for triage:
 - Image URL, when available
 - A unique article identifier
 
-The assistant reviews additional summary pages while relevant coverage continues to appear. Batch sizes depend on the connected integration.
+The assistant can review additional summary pages when more evidence is needed.
+In Skills-based continuation, the selected command determines whether it processes
+one round or keeps researching across multiple rounds. Batch sizes depend on the
+connected integration.
 
 You can ask a natural-language question with a topic, place, and time range. The assistant adapts the search terms and date filters to the connected archive.
 
@@ -119,12 +122,73 @@ It then:
 3. Reports how many relevant articles were identified and fetched.
 4. Reports how many relevant articles remain pending.
 5. Offers explicit continuation when the configured workflow supports it.
-6. On continuation, works through the pending queue before expanding discovery.
+6. On continuation, resumes pending work within the selected continuation mode.
 
 Continuation happens in a follow-up request, not as an automatic background
 search. Review the Coverage Note for completed work, remaining candidates,
 retrieval failures, and the reason research stopped. Summaries without accepted
 full text should not support detailed factual claims.
+
+## Research Commands in Skills-Based Deep Search
+
+You can type these requests in the conversation. When more research is available,
+the answer can also offer **Continue one round** and **Continue in depth** actions.
+These commands control research effort, not the length or style of the answer.
+
+| Request | Behavior |
+|---|---|
+| **Continue** or **Continue one round** | Processes one additional research round, then answers. This is the default continuation mode. |
+| **Continue in depth** | Repeats discovery, relevance review, and full-article reading while useful work remains and safety limits permit. |
+| **Summarize what you have already found without more research** | Reuses retained evidence without searching for or retrieving additional articles. You can also ask to explain, rewrite, or reorganize those findings. |
+| **Start independent research on [topic]** | Starts a separate research workflow rather than extending the previous topic's queue. |
+
+### Continue one round
+
+One round means:
+
+- If relevant articles are pending or discovered candidates still need relevance
+  review, finish that saved work without starting another search.
+- Otherwise, retrieve one additional results page, classify its candidates, and
+  read the relevant full articles.
+- Then answer without starting another discovery page, query variant, or gap search.
+
+A round is not one article or one tool call. A temporally sampled page can cover
+several date periods and still count as one round. Context, budget, access, and
+execution limits can interrupt a round before all its work is complete.
+
+Normal completion appears as **Research round completed**. It does not mean the
+whole archive has been searched or every coverage gap has been resolved.
+
+### Continue in depth
+
+Use **Continue in depth** when you explicitly want successive research rounds
+without approving each page separately. The workflow resumes pending relevant
+articles, then follows available pages or investigates relevant coverage gaps.
+
+It should stop when useful research is complete, further searches make no
+meaningful progress, or a safety limit requires an answer. It should not keep
+searching merely because unused budget remains. In-depth continuation can take
+longer and consume more research budget; it does not guarantee exhaustive coverage.
+
+Each follow-up selects its own mode. Typing **Continue** after an in-depth answer
+returns to **one round**; it does not inherit the previous in-depth setting.
+Neither mode runs as unattended background research after the answer.
+
+### Targeting a gap or changing the answer
+
+A generic continuation resumes saved research; it does not promise to target a
+particular year. To focus the next request, state the scope explicitly, for example:
+
+> Investigate the missing 2026 council coverage.
+
+To change presentation without expanding the evidence, say:
+
+> Turn the existing findings into a timeline without doing more research.
+
+Review the Coverage Note to distinguish new articles read from previously
+retained evidence reused, pending candidates, and actual research interruptions.
+The commands above describe Skills-based workflows; legacy prompt-only projects
+may not enforce the same continuation boundaries.
 
 ## What Journalists Will Notice
 
