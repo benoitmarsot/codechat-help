@@ -13,6 +13,94 @@ Each query response, along with individual in-line links to specific stories, in
 - **Search trail** — shows all of the actions performed by the assistant and the justification for them.
 - **Reviewed articles** — displays all of the articles that were read and reviewed before a response was returned.
 
+### Research progress
+
+Skills responses show a **Research progress** summary above the collapsible
+Evidence & Sources panel. It remains visible when that panel is collapsed.
+During research, it shows the recorded activity phase and available counts for
+candidates, relevant articles, articles read, articles being read, and queued
+reads. Expand **Current queue state** for the other recorded counts.
+
+The summary changes to **Writing answer** when answer text starts streaming,
+or **Finalizing answer** while a draft is being finalized. After generation,
+it shows **Answer generated**, flags recorded research limitations, or identifies
+an interrupted request. An answer being generated does not mean every candidate
+was classified or every queued article was read. The final state remains
+available in saved trails; older responses can show only information that was
+recorded.
+
+Queue counts inside individual actions are labeled **Queue state at this step**.
+They retain that action's recorded snapshot rather than showing the latest
+counts. The progress summary is the single place to inspect the latest queue
+state. Article-read counts are distinct from the number of sources cited.
+
+### Review and change article relevance
+
+For saved **Deep Search** answers (**Deep Archive Search** or
+**Deep Archive Search NewsBank** in the flavor picker), expand **Final research state**,
+then select the button containing the **Relevant** and **Not relevant** counts.
+The **Review article relevance** dialog lists the classified articles in both
+groups. Unclassified candidates are not included.
+
+Each article shows:
+
+- **Title and link** — select the title to open the original article.
+- **Publication date** — or an indication that the date is unavailable.
+- **Read status** — Not read, Queued, Reading, Read, Failed, or Blocked.
+  Being marked relevant does not mean the full article has been read.
+- **Decision origin and date** — AI-classified or manually reviewed, when
+  recorded.
+- **Retrieval failure** — the recorded error code for a failed or blocked read,
+  when available.
+
+Expand **Summary and classification rationale** below an article to read its
+summary and original classification reasoning. Missing information is identified;
+older records cannot recover details that were not saved.
+
+To change the selection:
+
+1. Select **Move to not relevant** or **Move to relevant** on an article.
+2. Review the updated groups. Moves are marked as unsaved until you save them.
+3. Select **Save changes**, or **Cancel** to discard your unsaved moves.
+
+Saved changes apply to future continuations of the same research workflow.
+They do **not** rewrite the existing answer, change its citations, or immediately
+fetch articles. Newly relevant articles that have not been read are queued for
+future research. Previously retrieved full articles can be reused if made
+relevant again. Manual changes preserve the original classification rationale
+and record a separate manual-review date.
+
+The dialog reloads the workflow when opened, and the final-state counts reflect
+its current state. Historical action snapshots in the search trail remain
+unchanged. Editing is disabled while research is running on the same workflow;
+close and reopen the review after it finishes. If another reviewer changes a
+decision before you save, reopen the review to load the latest decisions.
+
+### Research cycles
+
+New research trails group search attempts, relevance decisions, and article reads
+into expandable **Research cycle** entries. Each new search attempt starts a
+cycle; parallel classification and retrieval events carry the cycle identifier
+recorded when their operation started. Grouping does not depend on events
+arriving next to each other.
+
+While waiting for the answer, the latest cycle opens automatically. Earlier
+cycles collapse unless you opened them yourself. Manual expansion and collapse
+choices are preserved as progress arrives. When answer writing starts, only
+automatically opened cycles collapse. Expand a cycle to inspect its queries,
+article links, decisions, and original queue snapshots.
+
+Cycle summaries show the available recorded outcomes: returned results,
+articles marked relevant or not relevant, and unique articles read. Returned
+results are not a count of new unique candidates; an article may appear in more
+than one search. Failures, blocked work, partial results, and missing operation
+outcomes remain distinguishable. Cancelled prefetches are reported separately
+and do not by themselves mark a cycle as failed.
+
+Model reflections remain outside the cycle groups, so live thinking summaries
+remain visible while you wait. Older trails without recorded cycle identifiers
+retain their chronological action display rather than guessing cycle boundaries.
+
 ### Model reflections
 
 Skills search trails include expandable **Model reflection** entries when the

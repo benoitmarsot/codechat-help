@@ -16,6 +16,20 @@ This page walks through the main Discover screen, the user control panel, and th
 6. **Individual user controls** — see [Individual user controls](#individual-user-controls) below.
 7. **Query entry field** — where you type your question.
 
+### Review research relevance
+
+For a saved **Deep Search** answer (**Deep Archive Search** or
+**Deep Archive Search NewsBank** in the flavor picker), expand **Final research state** and
+select the combined **Relevant / Not relevant** counts button. The review dialog
+shows article titles, publication dates, links, read status, and decision details.
+Expand an article's **Summary and classification rationale** to inspect why it
+was selected or excluded.
+
+Move articles between the two groups and select **Save changes** to apply your
+decisions to future research on the same workflow. The existing answer and
+citations stay unchanged. See [Review and change article relevance](discover-research-trails.md#review-and-change-article-relevance)
+for the available details and editing restrictions.
+
 ## Individual user controls
 
 ![User control panel with Light/Dark toggle, Admin, Profile, and Log out options](images/discover/user-controls.png)

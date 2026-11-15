@@ -109,6 +109,33 @@ The answer keeps the same newsroom-oriented structure as the normal prompt, incl
 - Possible reporting angles
 - Inline source chips and a complete source list
 
+### Review article relevance
+
+After an answer is saved, expand **Final research state** and select the button
+surrounding the **Relevant** and **Not relevant** counts. The relevance review
+shows both groups, with each article's title, publication date, and a clickable
+title linking to the article. Missing dates or links are identified.
+Each article also shows its read status, decision origin and date when available,
+and any recorded retrieval failure code when failed or blocked. Expand
+**Summary and classification rationale** to see the summary and original
+classification reasoning; missing information is explicitly identified.
+
+Use **Move to not relevant** or **Move to relevant**, then **Save changes**.
+**Cancel** discards unsaved moves. Saved decisions apply to future continuations
+of this research workflow; they do not rewrite the existing answer or its sources.
+Newly relevant articles that have not been read are queued for a future
+continuation, not fetched immediately. Relevance cannot be edited while research
+is running on the same workflow.
+Manual changes preserve the original classification rationale and record a
+separate manual-review date.
+Relevant does not necessarily mean read: use the read status to distinguish
+queued articles from full articles already retrieved. Unclassified candidates
+are not shown in either review group. The dialog shows the current workflow;
+queue snapshots inside earlier search-trail actions remain unchanged.
+
+See [Review and change article relevance](discover-research-trails.md#review-and-change-article-relevance)
+for the complete field list and instructions.
+
 ## What Happens Near the Context Limit
 
 When the workflow reaches its context or research budget, it stops further
